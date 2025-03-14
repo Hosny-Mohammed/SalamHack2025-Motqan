@@ -3,27 +3,27 @@ Generate an Initial Plan to any **Target**
 
 ## Requirements
 1. Auth: email & password
-2. View Targets: user can see 
+2. Add New Target:
+   - name
+   - details (prompt)
+   - target achieve days
+3. Generative AI will generate the entire plan roadmap.
+4. View Targets: user can see 
   - target boxes
   - review progress
-  - due dates
-3. Access Target Details (plan)
+5. Access Target Details (plan)
   - view phases
     - name
-    - due date
+    - materials
     - description
     - status
-  - view phase's sub-phases
+  - view phase's sub-phases(steps)
+  - track progress
+6. Take Actions
   - mark as completed
   - edit content
   - ask AI to regenerate plan
-  - track progress
-4. Add New Target:
-   - name
-   - details (prompt)
-   - due date
-5. Generative AI will generate the entire plan roadmap.
 
 ## Domain Model
-
+![domain model svg](domain_model.svg)
 ## Sequence Diagram
