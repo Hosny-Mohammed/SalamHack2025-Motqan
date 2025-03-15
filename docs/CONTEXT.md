@@ -32,7 +32,7 @@ InTarget is a productivity app that empowers users to achieve their goals by lev
 4. **Access Target Details (Plan)**:
    - View phases:
      - Name
-     - Materials
+     - Materials (with URLs provided by AI)
      - Description
      - Status
    - View phase's sub-phases (steps)
@@ -55,6 +55,7 @@ InTarget is a productivity app that empowers users to achieve their goals by lev
 - View the complete target plan, including:
   - Phases (with names, materials, descriptions, and status)
   - Sub-phases for each phase
+  - Materials and resources provided as URLs by AI
 - Mark phases or sub-phases as completed.
 - Edit target content and details.
 - Track progress visually (e.g., progress bar or percentage).
@@ -80,11 +81,12 @@ InTarget is a productivity app that empowers users to achieve their goals by lev
 - **Editable Content**: Modify phases and sub-phases.
 - **Progress Tracking**: Visual progress tracking.
 - **Flexible Target Management**: Add, edit, AI Regeneration, and complete targets.
+- **Material Suggestions**: AI provides URLs for materials and resources.
 
 ## 7. Backend Architecture
-- **Authentication API**: Secure user login and registration.
-- **AI Model Integration**: For generating and improving plans using Gemini.
-- **Database**: Store user targets, progress data, and user profiles.
+- **Authentication API**: FireBase Authentication.
+- **AI Model Integration**: For generating and plans using Gemini.
+- **Database**: Firebase Database.
 
 ## 8. Frontend Components
 - Dashboard (with target boxes)
@@ -95,6 +97,8 @@ InTarget is a productivity app that empowers users to achieve their goals by lev
 - Integration with calendar apps for reminders.
 - Collaborative goal setting with team members.
 - Points and rewards system for achieving milestones.
+- Share targets with other users
+- progress leader board
 
 ## 10. Conclusion
 InTarget leverages AI to help users who lack direction or experience in planning their goals. It provides a complete and flexible roadmap, allowing users to track progress and make adjustments along the way to ensure success.
