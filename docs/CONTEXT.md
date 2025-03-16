@@ -74,6 +74,7 @@ InTarget is a productivity app that empowers users to achieve their goals by lev
 ![domain model svg](domain_model.svg)
 
 ## 5. Sequence Diagram
+![alt text](sequence_diagram.svg)
 
 ## 6. Key Features
 - **Secure Authentication**: Email & password login.
