@@ -13,8 +13,6 @@ class HomepageModel extends FlutterFlowModel<HomepageWidget> {
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
-  // Stores action output result for [Gemini - Generate Text] action in FloatingActionButton widget.
-  String? aiOutput;
 
   @override
   void initState(BuildContext context) {}

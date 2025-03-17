@@ -5,7 +5,7 @@
 
 
     <application
-        android:label="InTarget"
+        android:label="Intarget"
         tools:replace="android:label"
         android:icon="@mipmap/ic_launcher"
         android:requestLegacyExternalStorage="true">

@@ -1,4 +1,3 @@
-import '/backend/gemini/gemini.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -843,15 +842,8 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                 ),
               ),
               FloatingActionButton(
-                onPressed: () async {
-                  await geminiGenerateText(
-                    context,
-                    _model.textController.text,
-                  ).then((generatedText) {
-                    safeSetState(() => _model.aiOutput = generatedText);
-                  });
-
-                  safeSetState(() {});
+                onPressed: () {
+                  print('FloatingActionButton pressed ...');
                 },
                 backgroundColor: FlutterFlowTheme.of(context).secondary,
                 elevation: 2.0,
