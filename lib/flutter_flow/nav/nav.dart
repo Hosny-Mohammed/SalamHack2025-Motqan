@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
+import '/backend/backend.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
@@ -95,6 +96,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: HomepageWidget.routeName,
           path: HomepageWidget.routePath,
           builder: (context, params) => HomepageWidget(),
+        ),
+        FFRoute(
+          name: ProfileWidget.routeName,
+          path: ProfileWidget.routePath,
+          builder: (context, params) => ProfileWidget(),
+        ),
+        FFRoute(
+          name: TargetPlanWidget.routeName,
+          path: TargetPlanWidget.routePath,
+          asyncParams: {
+            'targetCollection': getDoc(['target'], TargetRecord.fromSnapshot),
+          },
+          builder: (context, params) => TargetPlanWidget(
+            targetCollection: params.getParam(
+              'targetCollection',
+              ParamType.Document,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -214,6 +233,7 @@ class FFParameters {
     ParamType type, {
     bool isList = false,
     List<String>? collectionNamePath,
+    StructBuilder<T>? structBuilder,
   }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
@@ -232,6 +252,7 @@ class FFParameters {
       type,
       isList,
       collectionNamePath: collectionNamePath,
+      structBuilder: structBuilder,
     );
   }
 }

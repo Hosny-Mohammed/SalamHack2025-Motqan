@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'homepage_widget.dart' show HomepageWidget;
+import 'phase_list_viewer_widget.dart' show PhaseListViewerWidget;
 import 'package:flutter/material.dart';
 
-class HomepageModel extends FlutterFlowModel<HomepageWidget> {
+class PhaseListViewerModel extends FlutterFlowModel<PhaseListViewerWidget> {
   @override
   void initState(BuildContext context) {}
 

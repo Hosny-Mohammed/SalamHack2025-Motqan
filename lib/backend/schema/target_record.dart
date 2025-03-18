@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
-import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -26,21 +25,21 @@ class TargetRecord extends FirestoreRecord {
   String get details => _details ?? '';
   bool hasDetails() => _details != null;
 
-  // "dueDays" field.
-  int? _dueDays;
-  int get dueDays => _dueDays ?? 0;
-  bool hasDueDays() => _dueDays != null;
+  // "achivePeriod" field.
+  int? _achivePeriod;
+  int get achivePeriod => _achivePeriod ?? 0;
+  bool hasAchivePeriod() => _achivePeriod != null;
 
-  // "phases" field.
-  List<DocumentReference>? _phases;
-  List<DocumentReference> get phases => _phases ?? const [];
-  bool hasPhases() => _phases != null;
+  // "pheses" field.
+  List<DocumentReference>? _pheses;
+  List<DocumentReference> get pheses => _pheses ?? const [];
+  bool hasPheses() => _pheses != null;
 
   void _initializeFields() {
     _name = snapshotData['name'] as String?;
     _details = snapshotData['details'] as String?;
-    _dueDays = castToType<int>(snapshotData['dueDays']);
-    _phases = getDataList(snapshotData['phases']);
+    _achivePeriod = castToType<int>(snapshotData['achivePeriod']);
+    _pheses = getDataList(snapshotData['pheses']);
   }
 
   static CollectionReference get collection =>
@@ -79,13 +78,13 @@ class TargetRecord extends FirestoreRecord {
 Map<String, dynamic> createTargetRecordData({
   String? name,
   String? details,
-  int? dueDays,
+  int? achivePeriod,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'name': name,
       'details': details,
-      'dueDays': dueDays,
+      'achivePeriod': achivePeriod,
     }.withoutNulls,
   );
 
@@ -100,13 +99,13 @@ class TargetRecordDocumentEquality implements Equality<TargetRecord> {
     const listEquality = ListEquality();
     return e1?.name == e2?.name &&
         e1?.details == e2?.details &&
-        e1?.dueDays == e2?.dueDays &&
-        listEquality.equals(e1?.phases, e2?.phases);
+        e1?.achivePeriod == e2?.achivePeriod &&
+        listEquality.equals(e1?.pheses, e2?.pheses);
   }
 
   @override
-  int hash(TargetRecord? e) =>
-      const ListEquality().hash([e?.name, e?.details, e?.dueDays, e?.phases]);
+  int hash(TargetRecord? e) => const ListEquality()
+      .hash([e?.name, e?.details, e?.achivePeriod, e?.pheses]);
 
   @override
   bool isValidKey(Object? o) => o is TargetRecord;

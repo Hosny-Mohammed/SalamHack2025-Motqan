@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
-import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -41,22 +40,20 @@ class PhaseRecord extends FirestoreRecord {
   List<String> get materialsURLs => _materialsURLs ?? const [];
   bool hasMaterialsURLs() => _materialsURLs != null;
 
-  // "sub_phases" field.
-  List<DocumentReference>? _subPhases;
-  List<DocumentReference> get subPhases => _subPhases ?? const [];
-  bool hasSubPhases() => _subPhases != null;
-
   // "level" field.
   int? _level;
   int get level => _level ?? 0;
   bool hasLevel() => _level != null;
 
+  // "sub_phases" field.
+  List<DocumentReference>? _subPhases;
+  List<DocumentReference> get subPhases => _subPhases ?? const [];
+  bool hasSubPhases() => _subPhases != null;
+
   // "parent_phase" field.
   DocumentReference? _parentPhase;
   DocumentReference? get parentPhase => _parentPhase;
   bool hasParentPhase() => _parentPhase != null;
-
-  DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
     _name = snapshotData['name'] as String?;
@@ -64,18 +61,13 @@ class PhaseRecord extends FirestoreRecord {
     _dueDays = castToType<int>(snapshotData['dueDays']);
     _status = snapshotData['status'] as bool?;
     _materialsURLs = getDataList(snapshotData['materialsURLs']);
-    _subPhases = getDataList(snapshotData['sub_phases']);
     _level = castToType<int>(snapshotData['level']);
+    _subPhases = getDataList(snapshotData['sub_phases']);
     _parentPhase = snapshotData['parent_phase'] as DocumentReference?;
   }
 
-  static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
-      parent != null
-          ? parent.collection('phase')
-          : FirebaseFirestore.instance.collectionGroup('phase');
-
-  static DocumentReference createDoc(DocumentReference parent, {String? id}) =>
-      parent.collection('phase').doc(id);
+  static CollectionReference get collection =>
+      FirebaseFirestore.instance.collection('phase');
 
   static Stream<PhaseRecord> getDocument(DocumentReference ref) =>
       ref.snapshots().map((s) => PhaseRecord.fromSnapshot(s));
@@ -140,8 +132,8 @@ class PhaseRecordDocumentEquality implements Equality<PhaseRecord> {
         e1?.dueDays == e2?.dueDays &&
         e1?.status == e2?.status &&
         listEquality.equals(e1?.materialsURLs, e2?.materialsURLs) &&
-        listEquality.equals(e1?.subPhases, e2?.subPhases) &&
         e1?.level == e2?.level &&
+        listEquality.equals(e1?.subPhases, e2?.subPhases) &&
         e1?.parentPhase == e2?.parentPhase;
   }
 
@@ -152,8 +144,8 @@ class PhaseRecordDocumentEquality implements Equality<PhaseRecord> {
         e?.dueDays,
         e?.status,
         e?.materialsURLs,
-        e?.subPhases,
         e?.level,
+        e?.subPhases,
         e?.parentPhase
       ]);
 

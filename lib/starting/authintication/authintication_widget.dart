@@ -184,7 +184,7 @@ class _AuthinticationWidgetState extends State<AuthinticationWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .headlineMedium
                                           .override(
-                                            fontFamily: 'Readex Pro',
+                                            fontFamily: 'Outfit',
                                             letterSpacing: 0.0,
                                           ),
                                     ),
@@ -222,14 +222,14 @@ class _AuthinticationWidgetState extends State<AuthinticationWidget>
                                     labelStyle: FlutterFlowTheme.of(context)
                                         .displaySmall
                                         .override(
-                                          fontFamily: 'Readex Pro',
+                                          fontFamily: 'Outfit',
                                           letterSpacing: 0.0,
                                         ),
                                     unselectedLabelStyle:
                                         FlutterFlowTheme.of(context)
                                             .displaySmall
                                             .override(
-                                              fontFamily: 'Readex Pro',
+                                              fontFamily: 'Outfit',
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.normal,
                                             ),
@@ -278,7 +278,7 @@ class _AuthinticationWidgetState extends State<AuthinticationWidget>
                                                           context)
                                                       .labelMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Manrope',
                                                         letterSpacing: 0.0,
                                                       ),
                                                 ),
@@ -307,7 +307,7 @@ class _AuthinticationWidgetState extends State<AuthinticationWidget>
                                                               .labelMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Manrope',
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
@@ -370,7 +370,7 @@ class _AuthinticationWidgetState extends State<AuthinticationWidget>
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Manrope',
                                                           letterSpacing: 0.0,
                                                         ),
                                                     keyboardType: TextInputType
@@ -410,7 +410,7 @@ class _AuthinticationWidgetState extends State<AuthinticationWidget>
                                                               .labelMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Manrope',
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
@@ -496,7 +496,7 @@ class _AuthinticationWidgetState extends State<AuthinticationWidget>
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Manrope',
                                                           letterSpacing: 0.0,
                                                         ),
                                                     cursorColor:
@@ -569,7 +569,7 @@ class _AuthinticationWidgetState extends State<AuthinticationWidget>
                                                               .titleSmall
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Manrope',
                                                                 color: Colors
                                                                     .white,
                                                                 letterSpacing:
@@ -627,7 +627,7 @@ class _AuthinticationWidgetState extends State<AuthinticationWidget>
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Manrope',
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
@@ -672,7 +672,7 @@ class _AuthinticationWidgetState extends State<AuthinticationWidget>
                                                           context)
                                                       .labelMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Manrope',
                                                         letterSpacing: 0.0,
                                                       ),
                                                 ),
@@ -698,7 +698,7 @@ class _AuthinticationWidgetState extends State<AuthinticationWidget>
                                                               .labelMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Manrope',
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
@@ -761,7 +761,7 @@ class _AuthinticationWidgetState extends State<AuthinticationWidget>
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Manrope',
                                                           letterSpacing: 0.0,
                                                         ),
                                                     cursorColor:
@@ -798,7 +798,7 @@ class _AuthinticationWidgetState extends State<AuthinticationWidget>
                                                               .labelMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Manrope',
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
@@ -861,7 +861,7 @@ class _AuthinticationWidgetState extends State<AuthinticationWidget>
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Manrope',
                                                           letterSpacing: 0.0,
                                                         ),
                                                     keyboardType: TextInputType
@@ -901,7 +901,7 @@ class _AuthinticationWidgetState extends State<AuthinticationWidget>
                                                               .labelMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Manrope',
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
@@ -987,7 +987,7 @@ class _AuthinticationWidgetState extends State<AuthinticationWidget>
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Manrope',
                                                           letterSpacing: 0.0,
                                                         ),
                                                     cursorColor:
@@ -1026,7 +1026,7 @@ class _AuthinticationWidgetState extends State<AuthinticationWidget>
                                                               .labelMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Manrope',
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
@@ -1112,7 +1112,7 @@ class _AuthinticationWidgetState extends State<AuthinticationWidget>
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Manrope',
                                                           letterSpacing: 0.0,
                                                         ),
                                                     minLines: 1,
@@ -1202,7 +1202,7 @@ class _AuthinticationWidgetState extends State<AuthinticationWidget>
                                                               .titleSmall
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Manrope',
                                                                 color: Colors
                                                                     .white,
                                                                 letterSpacing:
