@@ -131,21 +131,21 @@ class LightModeTheme extends FlutterFlowTheme {
   @Deprecated('Use tertiary instead')
   Color get tertiaryColor => tertiary;
 
-  late Color primary = const Color(0xFF06D5CD);
-  late Color secondary = const Color(0xFF18AA99);
-  late Color tertiary = const Color(0xFF984BB6);
-  late Color alternate = const Color(0xFFDFEDEC);
-  late Color primaryText = const Color(0xFF101518);
-  late Color secondaryText = const Color(0xFF57636C);
-  late Color primaryBackground = const Color(0xFFF5FBFB);
+  late Color primary = const Color(0xFF2797FF);
+  late Color secondary = const Color(0xFF0B67BC);
+  late Color tertiary = const Color(0xFFACC420);
+  late Color alternate = const Color(0xFFE0E3E7);
+  late Color primaryText = const Color(0xFF161C24);
+  late Color secondaryText = const Color(0xFF636F81);
+  late Color primaryBackground = const Color(0xFFF0F5F9);
   late Color secondaryBackground = const Color(0xFFFFFFFF);
-  late Color accent1 = const Color(0x4C06D5CD);
-  late Color accent2 = const Color(0x4D18AA99);
-  late Color accent3 = const Color(0x4D984BB6);
-  late Color accent4 = const Color(0xB2FFFFFF);
-  late Color success = const Color(0xFF16857B);
-  late Color warning = const Color(0xFFF3C344);
-  late Color error = const Color(0xFFC4454D);
+  late Color accent1 = const Color(0x4C2797FF);
+  late Color accent2 = const Color(0x4C0B67BC);
+  late Color accent3 = const Color(0x4DACC420);
+  late Color accent4 = const Color(0xFFEEEEEE);
+  late Color success = const Color(0xFF27AE52);
+  late Color warning = const Color(0xFFFC964D);
+  late Color error = const Color(0xFFEE4444);
   late Color info = const Color(0xFFFFFFFF);
 
   late Color barnRed = Color(0xFF780000);
@@ -193,108 +193,109 @@ class ThemeTypography extends Typography {
 
   final FlutterFlowTheme theme;
 
-  String get displayLargeFamily => 'Readex Pro';
+  String get displayLargeFamily => 'Outfit';
   TextStyle get displayLarge => GoogleFonts.getFont(
-        'Readex Pro',
+        'Outfit',
         color: theme.primaryText,
-        fontWeight: FontWeight.w300,
-        fontSize: 52.0,
+        fontWeight: FontWeight.normal,
+        fontSize: 57.0,
       );
-  String get displayMediumFamily => 'Readex Pro';
+  String get displayMediumFamily => 'Outfit';
   TextStyle get displayMedium => GoogleFonts.getFont(
-        'Readex Pro',
+        'Outfit',
         color: theme.primaryText,
-        fontWeight: FontWeight.w500,
-        fontSize: 44.0,
+        fontWeight: FontWeight.normal,
+        fontSize: 45.0,
       );
-  String get displaySmallFamily => 'Readex Pro';
+  String get displaySmallFamily => 'Outfit';
   TextStyle get displaySmall => GoogleFonts.getFont(
-        'Readex Pro',
+        'Outfit',
         color: theme.primaryText,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.w600,
         fontSize: 36.0,
       );
-  String get headlineLargeFamily => 'Readex Pro';
+  String get headlineLargeFamily => 'Outfit';
   TextStyle get headlineLarge => GoogleFonts.getFont(
-        'Readex Pro',
+        'Outfit',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 32.0,
       );
-  String get headlineMediumFamily => 'Readex Pro';
+  String get headlineMediumFamily => 'Outfit';
   TextStyle get headlineMedium => GoogleFonts.getFont(
-        'Readex Pro',
+        'Outfit',
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 28.0,
+        fontWeight: FontWeight.w600,
+        fontSize: 32.0,
       );
-  String get headlineSmallFamily => 'Readex Pro';
+  String get headlineSmallFamily => 'Outfit';
   TextStyle get headlineSmall => GoogleFonts.getFont(
-        'Readex Pro',
+        'Outfit',
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
+        fontWeight: FontWeight.bold,
         fontSize: 24.0,
       );
-  String get titleLargeFamily => 'Inter';
+  String get titleLargeFamily => 'Outfit';
   TextStyle get titleLarge => GoogleFonts.getFont(
-        'Inter',
+        'Outfit',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 22.0,
       );
-  String get titleMediumFamily => 'Inter';
+  String get titleMediumFamily => 'Manrope';
   TextStyle get titleMedium => GoogleFonts.getFont(
-        'Inter',
-        color: theme.info,
-        fontWeight: FontWeight.w500,
-        fontSize: 18.0,
-      );
-  String get titleSmallFamily => 'Inter';
-  TextStyle get titleSmall => GoogleFonts.getFont(
-        'Inter',
+        'Manrope',
         color: theme.info,
         fontWeight: FontWeight.w500,
         fontSize: 16.0,
       );
-  String get labelLargeFamily => 'Inter';
+  String get titleSmallFamily => 'Manrope';
+  TextStyle get titleSmall => GoogleFonts.getFont(
+        'Manrope',
+        color: theme.info,
+        fontWeight: FontWeight.w500,
+        fontSize: 14.0,
+      );
+  String get labelLargeFamily => 'Manrope';
   TextStyle get labelLarge => GoogleFonts.getFont(
-        'Inter',
+        'Manrope',
         color: theme.secondaryText,
         fontWeight: FontWeight.w500,
         fontSize: 16.0,
       );
-  String get labelMediumFamily => 'Inter';
+  String get labelMediumFamily => 'Manrope';
   TextStyle get labelMedium => GoogleFonts.getFont(
-        'Inter',
+        'Manrope',
         color: theme.secondaryText,
         fontWeight: FontWeight.w500,
         fontSize: 14.0,
       );
-  String get labelSmallFamily => 'Inter';
+  String get labelSmallFamily => 'Manrope';
   TextStyle get labelSmall => GoogleFonts.getFont(
-        'Inter',
+        'Manrope',
         color: theme.secondaryText,
         fontWeight: FontWeight.w500,
         fontSize: 12.0,
       );
-  String get bodyLargeFamily => 'Inter';
+  String get bodyLargeFamily => 'Manrope';
   TextStyle get bodyLarge => GoogleFonts.getFont(
-        'Inter',
+        'Manrope',
         color: theme.primaryText,
+        fontWeight: FontWeight.w500,
         fontSize: 16.0,
       );
-  String get bodyMediumFamily => 'Inter';
+  String get bodyMediumFamily => 'Manrope';
   TextStyle get bodyMedium => GoogleFonts.getFont(
-        'Inter',
+        'Manrope',
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
+        fontWeight: FontWeight.w500,
         fontSize: 14.0,
       );
-  String get bodySmallFamily => 'Inter';
+  String get bodySmallFamily => 'Manrope';
   TextStyle get bodySmall => GoogleFonts.getFont(
-        'Inter',
+        'Manrope',
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
+        fontWeight: FontWeight.w500,
         fontSize: 12.0,
       );
 }
@@ -307,21 +308,21 @@ class DarkModeTheme extends FlutterFlowTheme {
   @Deprecated('Use tertiary instead')
   Color get tertiaryColor => tertiary;
 
-  late Color primary = const Color(0xFF06D5CD);
-  late Color secondary = const Color(0xFF18AA99);
-  late Color tertiary = const Color(0xFF984BB6);
-  late Color alternate = const Color(0xFF293D3E);
+  late Color primary = const Color(0xFF2797FF);
+  late Color secondary = const Color(0xFF0B67BC);
+  late Color tertiary = const Color(0xFFACC420);
+  late Color alternate = const Color(0xFF2B3743);
   late Color primaryText = const Color(0xFFFFFFFF);
-  late Color secondaryText = const Color(0xFF95A1AC);
-  late Color primaryBackground = const Color(0xFF132121);
-  late Color secondaryBackground = const Color(0xFF101818);
-  late Color accent1 = const Color(0x4C06D5CD);
-  late Color accent2 = const Color(0x4D18AA99);
-  late Color accent3 = const Color(0x4D984BB6);
-  late Color accent4 = const Color(0xB3101818);
-  late Color success = const Color(0xFF16857B);
-  late Color warning = const Color(0xFFF3C344);
-  late Color error = const Color(0xFFC4454D);
+  late Color secondaryText = const Color(0xFF919BAB);
+  late Color primaryBackground = const Color(0xFF161C24);
+  late Color secondaryBackground = const Color(0xFF212B36);
+  late Color accent1 = const Color(0x4C2797FF);
+  late Color accent2 = const Color(0x4C0B67BC);
+  late Color accent3 = const Color(0x4DACC420);
+  late Color accent4 = const Color(0xB3161C24);
+  late Color success = const Color(0xFF27AE52);
+  late Color warning = const Color(0xFFFC964D);
+  late Color error = const Color(0xFFEE4444);
   late Color info = const Color(0xFFFFFFFF);
 
   late Color barnRed = Color(0xFF780000);

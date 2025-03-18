@@ -96,24 +96,22 @@ Future<List<TargetRecord>> queryTargetRecordOnce({
 
 /// Functions to query PhaseRecords (as a Stream and as a Future).
 Future<int> queryPhaseRecordCount({
-  DocumentReference? parent,
   Query Function(Query)? queryBuilder,
   int limit = -1,
 }) =>
     queryCollectionCount(
-      PhaseRecord.collection(parent),
+      PhaseRecord.collection,
       queryBuilder: queryBuilder,
       limit: limit,
     );
 
 Stream<List<PhaseRecord>> queryPhaseRecord({
-  DocumentReference? parent,
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollection(
-      PhaseRecord.collection(parent),
+      PhaseRecord.collection,
       PhaseRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
@@ -121,13 +119,12 @@ Stream<List<PhaseRecord>> queryPhaseRecord({
     );
 
 Future<List<PhaseRecord>> queryPhaseRecordOnce({
-  DocumentReference? parent,
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollectionOnce(
-      PhaseRecord.collection(parent),
+      PhaseRecord.collection,
       PhaseRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
