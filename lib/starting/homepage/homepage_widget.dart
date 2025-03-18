@@ -5,6 +5,7 @@ import '/components/target_box_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'homepage_model.dart';
@@ -119,8 +120,8 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                     color: FlutterFlowTheme.of(context).primary,
                     size: 24.0,
                   ),
-                  onPressed: () {
-                    print('IconButton pressed ...');
+                  onPressed: () async {
+                    context.pushNamed(ProfileWidget.routeName);
                   },
                 ),
               ),
