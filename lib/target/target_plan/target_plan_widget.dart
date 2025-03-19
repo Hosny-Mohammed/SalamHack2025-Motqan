@@ -1,7 +1,8 @@
 import '/backend/backend.dart';
-import '/components/phase_list_viewer_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/target/phase_list_viewer/phase_list_viewer_widget.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'target_plan_model.dart';
@@ -110,7 +111,7 @@ class _TargetPlanWidgetState extends State<TargetPlanWidget> {
           children: [
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 0.0, 0.0),
-              child: Text(
+              child: AutoSizeText(
                 valueOrDefault<String>(
                   widget.targetCollection?.details,
                   'Target Details',

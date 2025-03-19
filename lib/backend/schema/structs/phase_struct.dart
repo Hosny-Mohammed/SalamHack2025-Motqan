@@ -14,11 +14,13 @@ class PhaseStruct extends FFFirebaseStruct {
     String? description,
     int? achivePeriod,
     List<String>? materials,
+    List<String>? checkListTasks,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _name = name,
         _description = description,
         _achivePeriod = achivePeriod,
         _materials = materials,
+        _checkListTasks = checkListTasks,
         super(firestoreUtilData);
 
   // "name" field.
@@ -56,11 +58,23 @@ class PhaseStruct extends FFFirebaseStruct {
 
   bool hasMaterials() => _materials != null;
 
+  // "checkListTasks" field.
+  List<String>? _checkListTasks;
+  List<String> get checkListTasks => _checkListTasks ?? const [];
+  set checkListTasks(List<String>? val) => _checkListTasks = val;
+
+  void updateCheckListTasks(Function(List<String>) updateFn) {
+    updateFn(_checkListTasks ??= []);
+  }
+
+  bool hasCheckListTasks() => _checkListTasks != null;
+
   static PhaseStruct fromMap(Map<String, dynamic> data) => PhaseStruct(
         name: data['name'] as String?,
         description: data['description'] as String?,
         achivePeriod: castToType<int>(data['achivePeriod']),
         materials: getDataList(data['materials']),
+        checkListTasks: getDataList(data['checkListTasks']),
       );
 
   static PhaseStruct? maybeFromMap(dynamic data) =>
@@ -71,6 +85,7 @@ class PhaseStruct extends FFFirebaseStruct {
         'description': _description,
         'achivePeriod': _achivePeriod,
         'materials': _materials,
+        'checkListTasks': _checkListTasks,
       }.withoutNulls;
 
   @override
@@ -89,6 +104,11 @@ class PhaseStruct extends FFFirebaseStruct {
         ),
         'materials': serializeParam(
           _materials,
+          ParamType.String,
+          isList: true,
+        ),
+        'checkListTasks': serializeParam(
+          _checkListTasks,
           ParamType.String,
           isList: true,
         ),
@@ -116,6 +136,11 @@ class PhaseStruct extends FFFirebaseStruct {
           ParamType.String,
           true,
         ),
+        checkListTasks: deserializeParam<String>(
+          data['checkListTasks'],
+          ParamType.String,
+          true,
+        ),
       );
 
   @override
@@ -128,12 +153,13 @@ class PhaseStruct extends FFFirebaseStruct {
         name == other.name &&
         description == other.description &&
         achivePeriod == other.achivePeriod &&
-        listEquality.equals(materials, other.materials);
+        listEquality.equals(materials, other.materials) &&
+        listEquality.equals(checkListTasks, other.checkListTasks);
   }
 
   @override
-  int get hashCode =>
-      const ListEquality().hash([name, description, achivePeriod, materials]);
+  int get hashCode => const ListEquality()
+      .hash([name, description, achivePeriod, materials, checkListTasks]);
 }
 
 PhaseStruct createPhaseStruct({

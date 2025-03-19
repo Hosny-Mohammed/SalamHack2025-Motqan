@@ -55,6 +55,11 @@ class PhaseRecord extends FirestoreRecord {
   DocumentReference? get parentPhase => _parentPhase;
   bool hasParentPhase() => _parentPhase != null;
 
+  // "minSubPhasePeriod" field.
+  int? _minSubPhasePeriod;
+  int get minSubPhasePeriod => _minSubPhasePeriod ?? 0;
+  bool hasMinSubPhasePeriod() => _minSubPhasePeriod != null;
+
   void _initializeFields() {
     _name = snapshotData['name'] as String?;
     _description = snapshotData['description'] as String?;
@@ -64,6 +69,7 @@ class PhaseRecord extends FirestoreRecord {
     _level = castToType<int>(snapshotData['level']);
     _subPhases = getDataList(snapshotData['sub_phases']);
     _parentPhase = snapshotData['parent_phase'] as DocumentReference?;
+    _minSubPhasePeriod = castToType<int>(snapshotData['minSubPhasePeriod']);
   }
 
   static CollectionReference get collection =>
@@ -106,6 +112,7 @@ Map<String, dynamic> createPhaseRecordData({
   bool? status,
   int? level,
   DocumentReference? parentPhase,
+  int? minSubPhasePeriod,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -115,6 +122,7 @@ Map<String, dynamic> createPhaseRecordData({
       'status': status,
       'level': level,
       'parent_phase': parentPhase,
+      'minSubPhasePeriod': minSubPhasePeriod,
     }.withoutNulls,
   );
 
@@ -134,7 +142,8 @@ class PhaseRecordDocumentEquality implements Equality<PhaseRecord> {
         listEquality.equals(e1?.materialsURLs, e2?.materialsURLs) &&
         e1?.level == e2?.level &&
         listEquality.equals(e1?.subPhases, e2?.subPhases) &&
-        e1?.parentPhase == e2?.parentPhase;
+        e1?.parentPhase == e2?.parentPhase &&
+        e1?.minSubPhasePeriod == e2?.minSubPhasePeriod;
   }
 
   @override
@@ -146,7 +155,8 @@ class PhaseRecordDocumentEquality implements Equality<PhaseRecord> {
         e?.materialsURLs,
         e?.level,
         e?.subPhases,
-        e?.parentPhase
+        e?.parentPhase,
+        e?.minSubPhasePeriod
       ]);
 
   @override

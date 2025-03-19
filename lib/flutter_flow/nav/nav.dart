@@ -114,6 +114,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.Document,
             ),
           ),
+        ),
+        FFRoute(
+          name: PhaseDetailsWidget.routeName,
+          path: PhaseDetailsWidget.routePath,
+          asyncParams: {
+            'phaseDoc': getDoc(['phase'], PhaseRecord.fromSnapshot),
+          },
+          builder: (context, params) => PhaseDetailsWidget(
+            phaseDoc: params.getParam(
+              'phaseDoc',
+              ParamType.Document,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

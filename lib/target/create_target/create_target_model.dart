@@ -5,10 +5,6 @@ import 'create_target_widget.dart' show CreateTargetWidget;
 import 'package:flutter/material.dart';
 
 class CreateTargetModel extends FlutterFlowModel<CreateTargetWidget> {
-  ///  Local state fields for this component.
-
-  int? loopCounter = 0;
-
   ///  State fields for stateful widgets in this component.
 
   final formKey = GlobalKey<FormState>();
@@ -61,22 +57,22 @@ class CreateTargetModel extends FlutterFlowModel<CreateTargetWidget> {
       return 'Achive Period is required';
     }
 
+    if (!RegExp('^(1[0-1][0-9]|120|[1-9][0-9])\$').hasMatch(val)) {
+      return 'The numbe of days only between 10 and 120';
+    }
     return null;
   }
 
-  // State field(s) for DropDown widget.
-  String? dropDownValue;
-  FormFieldController<String>? dropDownValueController;
+  // State field(s) for Unit widget.
+  String? unitValue;
+  FormFieldController<String>? unitValueController;
   // State field(s) for background widget.
-  FocusNode? backgroundFocusNode;
-  TextEditingController? backgroundTextController;
-  String? Function(BuildContext, String?)? backgroundTextControllerValidator;
+  String? backgroundValue;
+  FormFieldController<String>? backgroundValueController;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   TargetRecord? createdTargetDoc;
   // Stores action output result for [Custom Action - generatePhases] action in Button widget.
   List<PhaseStruct>? generatedPhases;
-  // Stores action output result for [Backend Call - Create Document] action in Button widget.
-  PhaseRecord? createdPhase;
 
   @override
   void initState(BuildContext context) {
@@ -95,8 +91,5 @@ class CreateTargetModel extends FlutterFlowModel<CreateTargetWidget> {
 
     achivePeriodFocusNode?.dispose();
     achivePeriodTextController?.dispose();
-
-    backgroundFocusNode?.dispose();
-    backgroundTextController?.dispose();
   }
 }
