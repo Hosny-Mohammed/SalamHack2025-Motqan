@@ -8,6 +8,7 @@ import 'schema/util/firestore_util.dart';
 import 'schema/user_record.dart';
 import 'schema/target_record.dart';
 import 'schema/phase_record.dart';
+import 'schema/task_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart' hide Order;
@@ -19,6 +20,7 @@ export 'schema/util/schema_util.dart';
 export 'schema/user_record.dart';
 export 'schema/target_record.dart';
 export 'schema/phase_record.dart';
+export 'schema/task_record.dart';
 
 /// Functions to query UserRecords (as a Stream and as a Future).
 Future<int> queryUserRecordCount({
@@ -126,6 +128,46 @@ Future<List<PhaseRecord>> queryPhaseRecordOnce({
     queryCollectionOnce(
       PhaseRecord.collection,
       PhaseRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query TaskRecords (as a Stream and as a Future).
+Future<int> queryTaskRecordCount({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      TaskRecord.collection(parent),
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<TaskRecord>> queryTaskRecord({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      TaskRecord.collection(parent),
+      TaskRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<TaskRecord>> queryTaskRecordOnce({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      TaskRecord.collection(parent),
+      TaskRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

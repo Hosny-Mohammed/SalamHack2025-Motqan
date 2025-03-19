@@ -1,4 +1,3 @@
-import '';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -9,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
+import '/actions/actions.dart' as action_blocks;
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -47,9 +47,6 @@ class _CreateTargetWidgetState extends State<CreateTargetWidget>
 
     _model.achivePeriodTextController ??= TextEditingController();
     _model.achivePeriodFocusNode ??= FocusNode();
-
-    _model.backgroundTextController ??= TextEditingController();
-    _model.backgroundFocusNode ??= FocusNode();
 
     animationsMap.addAll({
       'containerOnPageLoadAnimation1': AnimationInfo(
@@ -477,14 +474,13 @@ class _CreateTargetWidgetState extends State<CreateTargetWidget>
                                       ),
                                     ),
                                     FlutterFlowDropDown<String>(
-                                      controller:
-                                          _model.dropDownValueController ??=
-                                              FormFieldController<String>(
-                                        _model.dropDownValue ??= 'Days',
+                                      controller: _model.unitValueController ??=
+                                          FormFieldController<String>(
+                                        _model.unitValue ??= 'Days',
                                       ),
                                       options: ['Days'],
                                       onChanged: (val) => safeSetState(
-                                          () => _model.dropDownValue = val),
+                                          () => _model.unitValue = val),
                                       width: 200.0,
                                       height: 40.0,
                                       textStyle: FlutterFlowTheme.of(context)
@@ -519,79 +515,44 @@ class _CreateTargetWidgetState extends State<CreateTargetWidget>
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 12.0),
-                                child: TextFormField(
-                                  controller: _model.backgroundTextController,
-                                  focusNode: _model.backgroundFocusNode,
-                                  autofocus: true,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    labelText: 'Back Ground...',
-                                    labelStyle: FlutterFlowTheme.of(context)
-                                        .labelLarge
-                                        .override(
-                                          fontFamily: 'Manrope',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    hintStyle: FlutterFlowTheme.of(context)
-                                        .labelLarge
-                                        .override(
-                                          fontFamily: 'Manrope',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(4.0),
-                                        topRight: Radius.circular(4.0),
-                                      ),
-                                    ),
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(4.0),
-                                        topRight: Radius.circular(4.0),
-                                      ),
-                                    ),
-                                    errorBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(4.0),
-                                        topRight: Radius.circular(4.0),
-                                      ),
-                                    ),
-                                    focusedErrorBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(4.0),
-                                        topRight: Radius.circular(4.0),
-                                      ),
-                                    ),
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyLarge
+                                child: FlutterFlowDropDown<String>(
+                                  controller:
+                                      _model.backgroundValueController ??=
+                                          FormFieldController<String>(null),
+                                  options: [
+                                    'Begainner',
+                                    'Mid-level',
+                                    'Proffiional'
+                                  ],
+                                  onChanged: (val) => safeSetState(
+                                      () => _model.backgroundValue = val),
+                                  width: 610.82,
+                                  height: 40.0,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
                                       .override(
                                         fontFamily: 'Manrope',
                                         letterSpacing: 0.0,
                                       ),
-                                  validator: _model
-                                      .backgroundTextControllerValidator
-                                      .asValidator(context),
+                                  hintText: 'Back Ground...',
+                                  icon: Icon(
+                                    Icons.keyboard_arrow_down_rounded,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    size: 24.0,
+                                  ),
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  elevation: 2.0,
+                                  borderColor: Colors.transparent,
+                                  borderWidth: 0.0,
+                                  borderRadius: 8.0,
+                                  margin: EdgeInsetsDirectional.fromSTEB(
+                                      12.0, 0.0, 12.0, 0.0),
+                                  hidesUnderline: true,
+                                  isOverButton: false,
+                                  isSearchable: false,
+                                  isMultiSelect: false,
                                 ),
                               ),
                               Padding(
@@ -617,16 +578,31 @@ class _CreateTargetWidgetState extends State<CreateTargetWidget>
                                               TargetRecord.collection.doc();
                                           await targetRecordReference
                                               .set(createTargetRecordData(
-                                            name: 'Desktop',
-                                            details: 'cource',
-                                            achivePeriod: 90,
+                                            name: (_model.targetNameFocusNode
+                                                        ?.hasFocus ??
+                                                    false)
+                                                .toString(),
+                                            details: _model
+                                                .detailsTextController.text,
+                                            achivePeriod: int.tryParse(_model
+                                                .achivePeriodTextController
+                                                .text),
                                           ));
                                           _model.createdTargetDoc =
                                               TargetRecord.getDocumentFromData(
                                                   createTargetRecordData(
-                                                    name: 'Desktop',
-                                                    details: 'cource',
-                                                    achivePeriod: 90,
+                                                    name: (_model
+                                                                .targetNameFocusNode
+                                                                ?.hasFocus ??
+                                                            false)
+                                                        .toString(),
+                                                    details: _model
+                                                        .detailsTextController
+                                                        .text,
+                                                    achivePeriod: int.tryParse(
+                                                        _model
+                                                            .achivePeriodTextController
+                                                            .text),
                                                   ),
                                                   targetRecordReference);
 
@@ -656,89 +632,16 @@ class _CreateTargetWidgetState extends State<CreateTargetWidget>
                                                     .text),
                                                 _model
                                                     .detailsTextController.text,
-                                                _model.backgroundTextController
-                                                    .text),
+                                                _model.backgroundValue!),
                                           );
-                                          while (_model.loopCounter! <
-                                              _model.generatedPhases!.length) {
-                                            var phaseRecordReference =
-                                                PhaseRecord.collection.doc();
-                                            await phaseRecordReference.set({
-                                              ...createPhaseRecordData(
-                                                name: (_model.generatedPhases
-                                                        ?.elementAtOrNull(_model
-                                                            .loopCounter!))
-                                                    ?.name,
-                                                description: (_model
-                                                        .generatedPhases
-                                                        ?.elementAtOrNull(_model
-                                                            .loopCounter!))
-                                                    ?.description,
-                                                dueDays: (_model.generatedPhases
-                                                        ?.elementAtOrNull(_model
-                                                            .loopCounter!))
-                                                    ?.achivePeriod,
-                                                status: false,
-                                                level: 0,
-                                              ),
-                                              ...mapToFirestore(
-                                                {
-                                                  'materialsURLs': (_model
-                                                          .generatedPhases
-                                                          ?.elementAtOrNull(
-                                                              _model
-                                                                  .loopCounter!))
-                                                      ?.materials,
-                                                },
-                                              ),
-                                            });
-                                            _model.createdPhase = PhaseRecord
-                                                .getDocumentFromData({
-                                              ...createPhaseRecordData(
-                                                name: (_model.generatedPhases
-                                                        ?.elementAtOrNull(_model
-                                                            .loopCounter!))
-                                                    ?.name,
-                                                description: (_model
-                                                        .generatedPhases
-                                                        ?.elementAtOrNull(_model
-                                                            .loopCounter!))
-                                                    ?.description,
-                                                dueDays: (_model.generatedPhases
-                                                        ?.elementAtOrNull(_model
-                                                            .loopCounter!))
-                                                    ?.achivePeriod,
-                                                status: false,
-                                                level: 0,
-                                              ),
-                                              ...mapToFirestore(
-                                                {
-                                                  'materialsURLs': (_model
-                                                          .generatedPhases
-                                                          ?.elementAtOrNull(
-                                                              _model
-                                                                  .loopCounter!))
-                                                      ?.materials,
-                                                },
-                                              ),
-                                            }, phaseRecordReference);
-
-                                            await _model
-                                                .createdTargetDoc!.reference
-                                                .update({
-                                              ...mapToFirestore(
-                                                {
-                                                  'pheses':
-                                                      FieldValue.arrayUnion([
-                                                    _model
-                                                        .createdPhase?.reference
-                                                  ]),
-                                                },
-                                              ),
-                                            });
-                                            _model.loopCounter =
-                                                _model.loopCounter! + 1;
-                                          }
+                                          await action_blocks
+                                              .addGeneratedPhases(
+                                            context,
+                                            phasesList: _model.generatedPhases,
+                                            loopCounter: 0,
+                                            targetRef: _model
+                                                .createdTargetDoc?.reference,
+                                          );
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
                                             SnackBar(
@@ -757,7 +660,6 @@ class _CreateTargetWidgetState extends State<CreateTargetWidget>
                                                       .secondary,
                                             ),
                                           );
-                                          _model.loopCounter = 0;
                                           Navigator.pop(context);
 
                                           safeSetState(() {});

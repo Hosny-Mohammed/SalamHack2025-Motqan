@@ -1,6 +1,7 @@
 // Automatic FlutterFlow imports
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
+import '/actions/actions.dart' as action_blocks;
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom actions
@@ -30,15 +31,21 @@ Future<List<PhaseStruct>> generatePhases(String prompt) async {
             items: Schema.string(description: 'URL of the material.'),
             nullable: false,
           ),
+          'checkListTasks': Schema.array(
+            description: 'List of tasks of this phase.',
+            items: Schema.string(description: 'task content.'),
+            nullable: false,
+          ),
         },
         requiredProperties: [
           'name',
           'description',
           'achivePeriod',
-          'materials'
+          'materials',
+          'checkListTasks',
         ],
       ),
-      nullable: true);
+      nullable: false);
 
   var model = GenerativeModel(
     model: 'gemini-1.5-pro',
