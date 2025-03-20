@@ -15,14 +15,20 @@ class CreateTargetModel extends FlutterFlowModel<CreateTargetWidget> {
   String? _targetNameTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Target Name is required';
+      return FFLocalizations.of(context).getText(
+        'pwx7hodm' /* Target Name is required */,
+      );
     }
 
     if (val.length < 5) {
-      return 'Minimum is 5';
+      return FFLocalizations.of(context).getText(
+        '4cd5caci' /* Minimum is 5 */,
+      );
     }
     if (val.length > 50) {
-      return 'Too Long';
+      return FFLocalizations.of(context).getText(
+        'font7fwl' /* Too Long */,
+      );
     }
 
     return null;
@@ -34,14 +40,20 @@ class CreateTargetModel extends FlutterFlowModel<CreateTargetWidget> {
   String? Function(BuildContext, String?)? detailsTextControllerValidator;
   String? _detailsTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Detail is required';
+      return FFLocalizations.of(context).getText(
+        'bq9sni5e' /* Detail is required */,
+      );
     }
 
     if (val.length < 20) {
-      return 'please provide more details';
+      return FFLocalizations.of(context).getText(
+        'xxge8gw7' /* please provide more details */,
+      );
     }
     if (val.length > 300) {
-      return 'too longe';
+      return FFLocalizations.of(context).getText(
+        'mo30x6av' /* too longe */,
+      );
     }
 
     return null;
@@ -54,11 +66,15 @@ class CreateTargetModel extends FlutterFlowModel<CreateTargetWidget> {
   String? _achivePeriodTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Achive Period is required';
+      return FFLocalizations.of(context).getText(
+        'q3v3vav4' /* Achive Period is required */,
+      );
     }
 
     if (!RegExp('^(1[0-1][0-9]|120|[1-9][0-9])\$').hasMatch(val)) {
-      return 'The numbe of days only between 10 and 120';
+      return FFLocalizations.of(context).getText(
+        'tgzkk7jl' /* The numbe of days only between... */,
+      );
     }
     return null;
   }

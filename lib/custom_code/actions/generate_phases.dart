@@ -14,7 +14,7 @@ import 'dart:convert';
 import 'package:google_generative_ai/google_generative_ai.dart';
 
 Future<List<PhaseStruct>> generatePhases(String prompt) async {
-  var apiKey = "AIzaSyCE9cM8YiCuv5irplf5SxgfMbxvr6QWzsw";
+  var apiKey = "AIzaSyAPvssTzSt81g9Q6vhIFkD02SxSZgssEE0";
 
   final schema = Schema.array(
       description: 'List of phases.',

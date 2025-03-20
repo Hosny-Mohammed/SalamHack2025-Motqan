@@ -168,7 +168,10 @@ class _CreateTargetWidgetState extends State<CreateTargetWidget>
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 4.0),
                                               child: Text(
-                                                'Create Target',
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  '3p577mo1' /* Create Target */,
+                                                ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .headlineMedium
@@ -182,7 +185,10 @@ class _CreateTargetWidgetState extends State<CreateTargetWidget>
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 8.0),
                                               child: Text(
-                                                'Please enter the information below to add a project.',
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  '6t8548fr' /* Please enter the information b... */,
+                                                ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .labelMedium
@@ -222,7 +228,10 @@ class _CreateTargetWidgetState extends State<CreateTargetWidget>
                                     autofocus: true,
                                     obscureText: false,
                                     decoration: InputDecoration(
-                                      hintText: 'Target Name',
+                                      hintText:
+                                          FFLocalizations.of(context).getText(
+                                        'vaannbj5' /* Target Name */,
+                                      ),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .headlineMedium
                                           .override(
@@ -306,7 +315,10 @@ class _CreateTargetWidgetState extends State<CreateTargetWidget>
                                             fontFamily: 'Manrope',
                                             letterSpacing: 0.0,
                                           ),
-                                      hintText: 'Details...',
+                                      hintText:
+                                          FFLocalizations.of(context).getText(
+                                        '33kuzdn2' /* Details... */,
+                                      ),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelLarge
                                           .override(
@@ -391,7 +403,11 @@ class _CreateTargetWidgetState extends State<CreateTargetWidget>
                                             autofocus: false,
                                             obscureText: false,
                                             decoration: InputDecoration(
-                                              labelText: 'Achive Period...',
+                                              labelText:
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                'bi6rgshq' /* Achive Period... */,
+                                              ),
                                               labelStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .labelLarge
@@ -483,9 +499,17 @@ class _CreateTargetWidgetState extends State<CreateTargetWidget>
                                         controller:
                                             _model.unitValueController ??=
                                                 FormFieldController<String>(
-                                          _model.unitValue ??= 'Days',
+                                          _model.unitValue ??=
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                            '07b6v2g8' /* Days */,
+                                          ),
                                         ),
-                                        options: ['Days'],
+                                        options: [
+                                          FFLocalizations.of(context).getText(
+                                            'lxbw3p61' /* Days */,
+                                          )
+                                        ],
                                         onChanged: (val) => safeSetState(
                                             () => _model.unitValue = val),
                                         width: 200.0,
@@ -496,7 +520,10 @@ class _CreateTargetWidgetState extends State<CreateTargetWidget>
                                               fontFamily: 'Manrope',
                                               letterSpacing: 0.0,
                                             ),
-                                        hintText: 'Select Unit...',
+                                        hintText:
+                                            FFLocalizations.of(context).getText(
+                                          'psnf7h75' /* Select Unit... */,
+                                        ),
                                         icon: Icon(
                                           Icons.keyboard_arrow_down_rounded,
                                           color: FlutterFlowTheme.of(context)
@@ -527,9 +554,15 @@ class _CreateTargetWidgetState extends State<CreateTargetWidget>
                                         _model.backgroundValueController ??=
                                             FormFieldController<String>(null),
                                     options: [
-                                      'Begainner',
-                                      'Mid-level',
-                                      'Proffiional'
+                                      FFLocalizations.of(context).getText(
+                                        'wqr3a07e' /* Begainner */,
+                                      ),
+                                      FFLocalizations.of(context).getText(
+                                        'er2i0fra' /* Mid-level */,
+                                      ),
+                                      FFLocalizations.of(context).getText(
+                                        'eie6f02r' /* Proffiional */,
+                                      )
                                     ],
                                     onChanged: (val) => safeSetState(
                                         () => _model.backgroundValue = val),
@@ -541,7 +574,10 @@ class _CreateTargetWidgetState extends State<CreateTargetWidget>
                                           fontFamily: 'Manrope',
                                           letterSpacing: 0.0,
                                         ),
-                                    hintText: 'Back Ground...',
+                                    hintText:
+                                        FFLocalizations.of(context).getText(
+                                      'zgnsv2u0' /* Back Ground... */,
+                                    ),
                                     icon: Icon(
                                       Icons.keyboard_arrow_down_rounded,
                                       color: FlutterFlowTheme.of(context)
@@ -688,7 +724,10 @@ class _CreateTargetWidgetState extends State<CreateTargetWidget>
 
                                             safeSetState(() {});
                                           },
-                                          text: 'Create Target',
+                                          text: FFLocalizations.of(context)
+                                              .getText(
+                                            'f3bu3r1y' /* Create Target */,
+                                          ),
                                           options: FFButtonOptions(
                                             width: 250.0,
                                             height: 50.0,

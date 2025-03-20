@@ -115,11 +115,29 @@ class _PhaseDetailsWidgetState extends State<PhaseDetailsWidget>
                           {
                             'progress':
                                 FieldValue.increment((int total, int dueDayes) {
-                              return (dueDayes != 0) ? (total / dueDayes) : 0.0;
+                              return (dueDayes != 0) ? (dueDayes / total) : 0.0;
                             }(widget.total, widget.phaseDoc!.dueDays)),
                           },
                         ),
                       });
+                      await showDialog(
+                        context: context,
+                        builder: (alertDialogContext) {
+                          return AlertDialog(
+                            title: Text('Compleating Alert'),
+                            content:
+                                Text('The Phase compleated, check progress'),
+                            actions: [
+                              TextButton(
+                                onPressed: () =>
+                                    Navigator.pop(alertDialogContext),
+                                child: Text('Ok'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                      context.safePop();
                     },
                   ),
                 ),
@@ -178,7 +196,9 @@ class _PhaseDetailsWidgetState extends State<PhaseDetailsWidget>
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                         child: Text(
-                          'Phase Details',
+                          FFLocalizations.of(context).getText(
+                            '4nh0lexe' /* Phase Details */,
+                          ),
                           textAlign: TextAlign.start,
                           style:
                               FlutterFlowTheme.of(context).bodyLarge.override(
@@ -242,10 +262,14 @@ class _PhaseDetailsWidgetState extends State<PhaseDetailsWidget>
                                     16.0, 0.0, 16.0, 0.0),
                                 tabs: [
                                   Tab(
-                                    text: 'Tasks',
+                                    text: FFLocalizations.of(context).getText(
+                                      '8m8kxa7g' /* Tasks */,
+                                    ),
                                   ),
                                   Tab(
-                                    text: 'Materials',
+                                    text: FFLocalizations.of(context).getText(
+                                      'aamfsbte' /* Materials */,
+                                    ),
                                   ),
                                 ],
                                 controller: _model.tabBarController,
@@ -336,7 +360,11 @@ class _PhaseDetailsWidgetState extends State<PhaseDetailsWidget>
                                                                     0.0,
                                                                     0.0),
                                                         child: Text(
-                                                          'Phase Check List',
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'msv58cjv' /* Phase Check List */,
+                                                          ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .headlineSmall
@@ -503,7 +531,11 @@ class _PhaseDetailsWidgetState extends State<PhaseDetailsWidget>
                                                                   0.0,
                                                                   0.0),
                                                       child: Text(
-                                                        'Phase Materials List',
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                          'xos11h3b' /* Phase Materials List */,
+                                                        ),
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -562,38 +594,42 @@ class _PhaseDetailsWidgetState extends State<PhaseDetailsWidget>
                                                   ),
                                                 ],
                                               ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 8.0, 0.0, 0.0),
-                                                child: Builder(
-                                                  builder: (context) {
-                                                    final materialsUrl = widget
-                                                            .phaseDoc
-                                                            ?.materialsURLs
-                                                            .toList() ??
-                                                        [];
+                                              Flexible(
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 8.0, 0.0, 0.0),
+                                                  child: Builder(
+                                                    builder: (context) {
+                                                      final materialsUrl =
+                                                          widget.phaseDoc
+                                                                  ?.materialsURLs
+                                                                  .toList() ??
+                                                              [];
 
-                                                    return ListView.builder(
-                                                      padding: EdgeInsets.zero,
-                                                      shrinkWrap: true,
-                                                      scrollDirection:
-                                                          Axis.vertical,
-                                                      itemCount:
-                                                          materialsUrl.length,
-                                                      itemBuilder: (context,
-                                                          materialsUrlIndex) {
-                                                        final materialsUrlItem =
-                                                            materialsUrl[
-                                                                materialsUrlIndex];
-                                                        return MaterialWidget(
-                                                          key: Key(
-                                                              'Keymia_${materialsUrlIndex}_of_${materialsUrl.length}'),
-                                                          url: materialsUrlItem,
-                                                        );
-                                                      },
-                                                    );
-                                                  },
+                                                      return ListView.builder(
+                                                        padding:
+                                                            EdgeInsets.zero,
+                                                        shrinkWrap: true,
+                                                        scrollDirection:
+                                                            Axis.vertical,
+                                                        itemCount:
+                                                            materialsUrl.length,
+                                                        itemBuilder: (context,
+                                                            materialsUrlIndex) {
+                                                          final materialsUrlItem =
+                                                              materialsUrl[
+                                                                  materialsUrlIndex];
+                                                          return MaterialWidget(
+                                                            key: Key(
+                                                                'Keymia_${materialsUrlIndex}_of_${materialsUrl.length}'),
+                                                            url:
+                                                                materialsUrlItem,
+                                                          );
+                                                        },
+                                                      );
+                                                    },
+                                                  ),
                                                 ),
                                               ),
                                             ],
@@ -613,7 +649,9 @@ class _PhaseDetailsWidgetState extends State<PhaseDetailsWidget>
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Sub Phases',
+                            FFLocalizations.of(context).getText(
+                              '02lbm4zi' /* Sub Phases */,
+                            ),
                             textAlign: TextAlign.start,
                             style:
                                 FlutterFlowTheme.of(context).bodyLarge.override(
@@ -621,8 +659,7 @@ class _PhaseDetailsWidgetState extends State<PhaseDetailsWidget>
                                       letterSpacing: 0.0,
                                     ),
                           ),
-                          if (widget.phaseDoc?.subPhases != null &&
-                              (widget.phaseDoc?.subPhases)!.isNotEmpty)
+                          if (!(widget.phaseDoc!.subPhases.isNotEmpty))
                             FFButtonWidget(
                               onPressed: () async {
                                 var _shouldSetState = false;
@@ -649,7 +686,9 @@ class _PhaseDetailsWidgetState extends State<PhaseDetailsWidget>
 
                                 if (_shouldSetState) safeSetState(() {});
                               },
-                              text: 'Generate',
+                              text: FFLocalizations.of(context).getText(
+                                'hipxz3v6' /* Generate */,
+                              ),
                               options: FFButtonOptions(
                                 width: 100.0,
                                 height: 32.0,

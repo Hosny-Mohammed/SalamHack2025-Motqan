@@ -137,7 +137,9 @@ class _TargetBoxWidgetState extends State<TargetBoxWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Text(
-                    'Total Days: ',
+                    FFLocalizations.of(context).getText(
+                      'ssui59wo' /* Total Days:  */,
+                    ),
                     style: FlutterFlowTheme.of(context).bodySmall.override(
                           fontFamily: 'Manrope',
                           color: FlutterFlowTheme.of(context).secondaryText,
@@ -170,7 +172,7 @@ class _TargetBoxWidgetState extends State<TargetBoxWidget> {
                 center: Text(
                   valueOrDefault<String>(
                     formatNumber(
-                      widget.targetDoc!.progress * 100,
+                      widget.targetDoc?.progress,
                       formatType: FormatType.percent,
                     ),
                     '50%',

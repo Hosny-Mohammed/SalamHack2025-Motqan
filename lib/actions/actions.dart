@@ -73,22 +73,24 @@ Future addGeneratedPhases(
       phaseRef: createdPhase.reference,
       loopCounter: 0,
     );
+    if (targetRef != null) {
+      await targetRef.update({
+        ...mapToFirestore(
+          {
+            'pheses': FieldValue.arrayUnion([createdPhase.reference]),
+          },
+        ),
+      });
+    } else {
+      await parentRef!.update({
+        ...mapToFirestore(
+          {
+            'sub_phases': FieldValue.arrayUnion([createdPhase.reference]),
+          },
+        ),
+      });
+    }
 
-    await targetRef!.update({
-      ...mapToFirestore(
-        {
-          'pheses': FieldValue.arrayUnion([createdPhase.reference]),
-        },
-      ),
-    });
-
-    await parentRef!.update({
-      ...mapToFirestore(
-        {
-          'sub_phases': FieldValue.arrayUnion([createdPhase.reference]),
-        },
-      ),
-    });
     await action_blocks.addGeneratedPhases(
       context,
       phasesList: phasesList,

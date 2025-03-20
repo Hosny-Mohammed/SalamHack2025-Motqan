@@ -101,7 +101,9 @@ class _HomepageWidgetState extends State<HomepageWidget> {
               backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
               automaticallyImplyLeading: false,
               title: Text(
-                'In Target',
+                FFLocalizations.of(context).getText(
+                  'cy5znk9d' /* In Target */,
+                ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
                       color: FlutterFlowTheme.of(context).primary,
@@ -162,7 +164,9 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                       child: Padding(
                         padding: EdgeInsets.all(10.0),
                         child: Text(
-                          'My Targets',
+                          FFLocalizations.of(context).getText(
+                            '7cp6wy2c' /* My Targets */,
+                          ),
                           textAlign: TextAlign.center,
                           style:
                               FlutterFlowTheme.of(context).titleLarge.override(

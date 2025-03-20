@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:collection/collection.dart';
 import 'package:from_css_color/from_css_color.dart';
 import 'dart:math' show pow, pi, sin;
+import 'package:geolocator/geolocator.dart';
 import 'package:intl/intl.dart';
 import 'package:json_path/json_path.dart';
 import 'package:timeago/timeago.dart' as timeago;
@@ -14,6 +15,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../main.dart';
 
+import 'lat_lng.dart';
 
 export 'keep_alive_wrapper.dart';
 export 'lat_lng.dart';
@@ -27,16 +29,25 @@ export 'package:intl/intl.dart';
 export 'package:cloud_firestore/cloud_firestore.dart'
     show DocumentReference, FirebaseFirestore;
 export 'package:page_transition/page_transition.dart';
+export 'internationalization.dart' show FFLocalizations;
 export 'nav/nav.dart';
 
 T valueOrDefault<T>(T? value, T defaultValue) =>
     (value is String && value.isEmpty) || value == null ? defaultValue : value;
+
+void _setTimeagoLocales() {
+  timeago.setLocaleMessages('en', timeago.EnMessages());
+  timeago.setLocaleMessages('en_short', timeago.EnShortMessages());
+  timeago.setLocaleMessages('ar', timeago.ArMessages());
+  timeago.setLocaleMessages('ar_short', timeago.ArShortMessages());
+}
 
 String dateTimeFormat(String format, DateTime? dateTime, {String? locale}) {
   if (dateTime == null) {
     return '';
   }
   if (format == 'relative') {
+    _setTimeagoLocales();
     return timeago.format(dateTime, locale: locale, allowFromNow: true);
   }
   return DateFormat(format, locale).format(dateTime);
@@ -245,6 +256,48 @@ const kTextValidatorEmailRegex =
 const kTextValidatorWebsiteRegex =
     r'(https?:\/\/)?(www\.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,10}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)|(https?:\/\/)?(www\.)?(?!ww)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,10}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)';
 
+LatLng? cachedUserLocation;
+Future<LatLng> getCurrentUserLocation(
+    {required LatLng defaultLocation, bool cached = false}) async {
+  if (cached && cachedUserLocation != null) {
+    return cachedUserLocation!;
+  }
+  return queryCurrentUserLocation().then((loc) {
+    if (loc != null) {
+      cachedUserLocation = loc;
+    }
+    return loc ?? defaultLocation;
+  }).onError((error, _) {
+    print("Error querying user location: $error");
+    return defaultLocation;
+  });
+}
+
+Future<LatLng?> queryCurrentUserLocation() async {
+  final serviceEnabled = await Geolocator.isLocationServiceEnabled();
+  if (!serviceEnabled) {
+    return Future.error('Location services are disabled.');
+  }
+
+  var permission = await Geolocator.checkPermission();
+  if (permission == LocationPermission.denied) {
+    permission = await Geolocator.requestPermission();
+    if (permission == LocationPermission.denied) {
+      return Future.error('Location permissions are denied');
+    }
+  }
+
+  if (permission == LocationPermission.deniedForever) {
+    return Future.error(
+        'Location permissions are permanently denied, we cannot request permissions.');
+  }
+
+  final position = await Geolocator.getCurrentPosition();
+  return position.latitude != 0 && position.longitude != 0
+      ? LatLng(position.latitude, position.longitude)
+      : null;
+}
+
 extension FFTextEditingControllerExt on TextEditingController? {
   String get text => this == null ? '' : this!.text;
   set text(String newText) => this?.text = newText;
@@ -271,6 +324,9 @@ extension IterableExt<T> on Iterable<T> {
 extension StringDocRef on String {
   DocumentReference get ref => FirebaseFirestore.instance.doc(this);
 }
+
+void setAppLanguage(BuildContext context, String language) =>
+    MyApp.of(context).setLocale(language);
 
 void setDarkModeSetting(BuildContext context, ThemeMode themeMode) =>
     MyApp.of(context).setThemeMode(themeMode);

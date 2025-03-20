@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'profile_model.dart';
 export 'profile_model.dart';
 
@@ -22,12 +23,15 @@ class _ProfileWidgetState extends State<ProfileWidget> {
   late ProfileModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  LatLng? currentUserLocationValue;
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => ProfileModel());
 
+    getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)
+        .then((loc) => safeSetState(() => currentUserLocationValue = loc));
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -40,6 +44,22 @@ class _ProfileWidgetState extends State<ProfileWidget> {
 
   @override
   Widget build(BuildContext context) {
+    if (currentUserLocationValue == null) {
+      return Container(
+        color: FlutterFlowTheme.of(context).primaryBackground,
+        child: Center(
+          child: SizedBox(
+            width: 50.0,
+            height: 50.0,
+            child: SpinKitDoubleBounce(
+              color: FlutterFlowTheme.of(context).primary,
+              size: 50.0,
+            ),
+          ),
+        ),
+      );
+    }
+
     return Title(
         title: 'profile',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
@@ -50,7 +70,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
             automaticallyImplyLeading: true,
             title: Text(
-              'Profile',
+              FFLocalizations.of(context).getText(
+                'qd2fd1yr' /* Profile */,
+              ),
               style: FlutterFlowTheme.of(context).displaySmall.override(
                     fontFamily: 'Outfit',
                     letterSpacing: 0.0,
@@ -163,7 +185,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    'Switch to Dark Mode',
+                                    FFLocalizations.of(context).getText(
+                                      'nox4ikru' /* Switch to Dark Mode */,
+                                    ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -256,7 +280,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    'Switch to Light Mode',
+                                    FFLocalizations.of(context).getText(
+                                      'xep64o49' /* Switch to Light Mode */,
+                                    ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -339,7 +365,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                         padding: EdgeInsetsDirectional.fromSTEB(
                             24.0, 12.0, 0.0, 12.0),
                         child: Text(
-                          'Account Settings',
+                          FFLocalizations.of(context).getText(
+                            'zogk13pr' /* Account Settings */,
+                          ),
                           style:
                               FlutterFlowTheme.of(context).labelMedium.override(
                                     fontFamily: 'Manrope',
@@ -384,7 +412,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   12.0, 0.0, 0.0, 0.0),
                               child: Text(
-                                'Change Password',
+                                FFLocalizations.of(context).getText(
+                                  'rvfi5jc1' /* Change Password */,
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .labelMedium
                                     .override(
@@ -437,10 +467,31 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           children: [
                             FlutterFlowDropDown<String>(
                               controller: _model.dropDownValueController ??=
-                                  FormFieldController<String>(null),
-                              options: ['ar', 'en'],
-                              onChanged: (val) => safeSetState(
-                                  () => _model.dropDownValue = val),
+                                  FormFieldController<String>(
+                                _model.dropDownValue ??=
+                                    currentUserLocationValue?.toString(),
+                              ),
+                              options: [
+                                FFLocalizations.of(context).getText(
+                                  'oj81uysw' /* Arabic */,
+                                ),
+                                FFLocalizations.of(context).getText(
+                                  'jyazahbx' /* English */,
+                                )
+                              ],
+                              onChanged: (val) async {
+                                safeSetState(() => _model.dropDownValue = val);
+                                setAppLanguage(
+                                    context,
+                                    valueOrDefault<String>(
+                                      (_model.dropDownValue != null &&
+                                                  _model.dropDownValue != '') &&
+                                              (_model.dropDownValue == 'Arabic')
+                                          ? 'ar'
+                                          : 'en',
+                                      'en',
+                                    ));
+                              },
                               width: 328.04,
                               height: 40.0,
                               textStyle: FlutterFlowTheme.of(context)
@@ -449,7 +500,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                     fontFamily: 'Manrope',
                                     letterSpacing: 0.0,
                                   ),
-                              hintText: 'Select Select Language...',
+                              hintText: FFLocalizations.of(context).getText(
+                                '7d1qbjt4' /* Select Select Language... */,
+                              ),
                               icon: Icon(
                                 Icons.keyboard_arrow_down_rounded,
                                 color:
@@ -504,7 +557,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   12.0, 0.0, 0.0, 0.0),
                               child: Text(
-                                'Edit Profile',
+                                FFLocalizations.of(context).getText(
+                                  'el8ahd4w' /* Edit Profile */,
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .labelMedium
                                     .override(
@@ -540,7 +595,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           onPressed: () {
                             print('Button pressed ...');
                           },
-                          text: 'Log Out',
+                          text: FFLocalizations.of(context).getText(
+                            'fs4hx8xo' /* Log Out */,
+                          ),
                           options: FFButtonOptions(
                             width: 90.0,
                             height: 40.0,

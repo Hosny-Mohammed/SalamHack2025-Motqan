@@ -184,7 +184,9 @@ class _AuthinticationWidgetState extends State<AuthinticationWidget>
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 0.0, 0.0, 0.0),
                                         child: Text(
-                                          'InTarget',
+                                          FFLocalizations.of(context).getText(
+                                            '0abtjg8g' /* InTarget */,
+                                          ),
                                           style: FlutterFlowTheme.of(context)
                                               .headlineMedium
                                               .override(
@@ -245,10 +247,16 @@ class _AuthinticationWidgetState extends State<AuthinticationWidget>
                                             0.0, 12.0, 16.0, 12.0),
                                         tabs: [
                                           Tab(
-                                            text: 'Sign In',
+                                            text: FFLocalizations.of(context)
+                                                .getText(
+                                              '989bcwo5' /* Sign In */,
+                                            ),
                                           ),
                                           Tab(
-                                            text: 'Sign Up',
+                                            text: FFLocalizations.of(context)
+                                                .getText(
+                                              'der9teyg' /* Sign Up */,
+                                            ),
                                           ),
                                         ],
                                         controller: _model.tabBarController,
@@ -279,7 +287,11 @@ class _AuthinticationWidgetState extends State<AuthinticationWidget>
                                                             .fromSTEB(0.0, 12.0,
                                                                 0.0, 24.0),
                                                     child: Text(
-                                                      'Let\'s get started by filling out the form below.',
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'hxql7zyz' /* Let's get started by filling o... */,
+                                                      ),
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .labelMedium
@@ -309,7 +321,12 @@ class _AuthinticationWidgetState extends State<AuthinticationWidget>
                                                         obscureText: false,
                                                         decoration:
                                                             InputDecoration(
-                                                          labelText: 'Email',
+                                                          labelText:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                            '5ysxnbzk' /* Email */,
+                                                          ),
                                                           labelStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -428,7 +445,12 @@ class _AuthinticationWidgetState extends State<AuthinticationWidget>
                                                             .passwordVisibility,
                                                         decoration:
                                                             InputDecoration(
-                                                          labelText: 'Password',
+                                                          labelText:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                            '0vqeiw8q' /* Password */,
+                                                          ),
                                                           labelStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -584,7 +606,12 @@ class _AuthinticationWidgetState extends State<AuthinticationWidget>
                                                                   .routeName,
                                                               context.mounted);
                                                         },
-                                                        text: 'Sign In',
+                                                        text:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                          't6a317dq' /* Sign In */,
+                                                        ),
                                                         options:
                                                             FFButtonOptions(
                                                           width: 230.0,
@@ -650,7 +677,12 @@ class _AuthinticationWidgetState extends State<AuthinticationWidget>
                                                           print(
                                                               'Button pressed ...');
                                                         },
-                                                        text: 'Forgot Password',
+                                                        text:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                          'ap8x4qud' /* Forgot Password */,
+                                                        ),
                                                         options:
                                                             FFButtonOptions(
                                                           width: 230.0,
@@ -721,7 +753,11 @@ class _AuthinticationWidgetState extends State<AuthinticationWidget>
                                                             .fromSTEB(0.0, 12.0,
                                                                 0.0, 24.0),
                                                     child: Text(
-                                                      'Let\'s get started by filling out the form below.',
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'l3511kls' /* Let's get started by filling o... */,
+                                                      ),
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .labelMedium
@@ -748,7 +784,12 @@ class _AuthinticationWidgetState extends State<AuthinticationWidget>
                                                         obscureText: false,
                                                         decoration:
                                                             InputDecoration(
-                                                          labelText: 'Name',
+                                                          labelText:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                            'brl7qxm5' /* Name */,
+                                                          ),
                                                           labelStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -863,7 +904,12 @@ class _AuthinticationWidgetState extends State<AuthinticationWidget>
                                                         obscureText: false,
                                                         decoration:
                                                             InputDecoration(
-                                                          labelText: 'Email',
+                                                          labelText:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                            'c5k5n4af' /* Email */,
+                                                          ),
                                                           labelStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -982,7 +1028,12 @@ class _AuthinticationWidgetState extends State<AuthinticationWidget>
                                                             .passwordCreateVisibility,
                                                         decoration:
                                                             InputDecoration(
-                                                          labelText: 'Password',
+                                                          labelText:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                            'i713vvak' /* Password */,
+                                                          ),
                                                           labelStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -1122,7 +1173,11 @@ class _AuthinticationWidgetState extends State<AuthinticationWidget>
                                                         decoration:
                                                             InputDecoration(
                                                           labelText:
-                                                              'Confirm Password',
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                            '57v2r60f' /* Confirm Password */,
+                                                          ),
                                                           labelStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -1296,7 +1351,12 @@ class _AuthinticationWidgetState extends State<AuthinticationWidget>
                                                                   .routeName,
                                                               context.mounted);
                                                         },
-                                                        text: 'Create Account',
+                                                        text:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                          '3bmgdf6u' /* Create Account */,
+                                                        ),
                                                         options:
                                                             FFButtonOptions(
                                                           width: 230.0,

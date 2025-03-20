@@ -59,14 +59,18 @@ class _TargetPlanWidgetState extends State<TargetPlanWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Text(
-                  'Target',
+                  FFLocalizations.of(context).getText(
+                    'hu1pro1g' /* Target */,
+                  ),
                   style: FlutterFlowTheme.of(context).titleLarge.override(
                         fontFamily: 'Outfit',
                         letterSpacing: 0.0,
                       ),
                 ),
                 Text(
-                  ' - Phases',
+                  FFLocalizations.of(context).getText(
+                    's3tdopzg' /*  - Phases */,
+                  ),
                   style: FlutterFlowTheme.of(context).titleLarge.override(
                         fontFamily: 'Outfit',
                         letterSpacing: 0.0,
@@ -81,7 +85,9 @@ class _TargetPlanWidgetState extends State<TargetPlanWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Text(
-                      'Total Days: ',
+                      FFLocalizations.of(context).getText(
+                        'g2wtgms5' /* Total Days:  */,
+                      ),
                       style: FlutterFlowTheme.of(context).bodyLarge.override(
                             fontFamily: 'Manrope',
                             letterSpacing: 0.0,
