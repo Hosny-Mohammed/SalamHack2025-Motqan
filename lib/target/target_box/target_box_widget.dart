@@ -65,8 +65,12 @@ class _TargetBoxWidgetState extends State<TargetBoxWidget> {
         );
       },
       child: Container(
-        width: 163.53,
-        height: 162.7,
+        width: 150.0,
+        height: 150.0,
+        constraints: BoxConstraints(
+          minWidth: 200.0,
+          minHeight: 200.0,
+        ),
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
           boxShadow: [
@@ -85,27 +89,32 @@ class _TargetBoxWidgetState extends State<TargetBoxWidget> {
           padding: EdgeInsets.all(16.0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).success,
-                      borderRadius: BorderRadius.circular(12.0),
-                    ),
-                    child: Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                  Flexible(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).success,
+                        borderRadius: BorderRadius.circular(12.0),
+                      ),
                       child: Padding(
                         padding: EdgeInsets.all(10.0),
                         child: Text(
                           valueOrDefault<String>(
                             widget.targetDoc?.name,
-                            'Target Name',
+                            'Target Namef ',
+                          ).maybeHandleOverflow(
+                            maxChars: 50,
+                            replacement: '…',
                           ),
                           textAlign: TextAlign.center,
+                          maxLines: 2,
                           style:
                               FlutterFlowTheme.of(context).labelSmall.override(
                                     fontFamily: 'Manrope',
@@ -118,7 +127,7 @@ class _TargetBoxWidgetState extends State<TargetBoxWidget> {
                     ),
                   ),
                   Icon(
-                    Icons.menu,
+                    Icons.more_vert_outlined,
                     color: FlutterFlowTheme.of(context).primaryText,
                     size: 24.0,
                   ),
@@ -149,22 +158,29 @@ class _TargetBoxWidgetState extends State<TargetBoxWidget> {
                 ],
               ),
               LinearPercentIndicator(
-                percent: 0.5,
-                width: 130.0,
+                percent: valueOrDefault<double>(
+                  widget.targetDoc?.progress,
+                  0.5,
+                ),
                 lineHeight: 20.0,
                 animation: true,
                 animateFromLastPercent: true,
                 progressColor: FlutterFlowTheme.of(context).primary,
-                backgroundColor: FlutterFlowTheme.of(context).accent4,
+                backgroundColor: FlutterFlowTheme.of(context).alternate,
                 center: Text(
-                  '50%',
-                  style: FlutterFlowTheme.of(context).headlineSmall.override(
-                        fontFamily: 'Outfit',
-                        color: FlutterFlowTheme.of(context).primaryText,
-                        fontSize: 16.0,
+                  valueOrDefault<String>(
+                    formatNumber(
+                      widget.targetDoc!.progress * 100,
+                      formatType: FormatType.percent,
+                    ),
+                    '50%',
+                  ),
+                  style: FlutterFlowTheme.of(context).bodyLarge.override(
+                        fontFamily: 'Manrope',
                         letterSpacing: 0.0,
                       ),
                 ),
+                barRadius: Radius.circular(10.0),
                 padding: EdgeInsets.zero,
               ),
             ].divide(SizedBox(height: 12.0)),

@@ -40,12 +40,18 @@ class TargetRecord extends FirestoreRecord {
   int get minPhasePeriod => _minPhasePeriod ?? 0;
   bool hasMinPhasePeriod() => _minPhasePeriod != null;
 
+  // "progress" field.
+  double? _progress;
+  double get progress => _progress ?? 0.0;
+  bool hasProgress() => _progress != null;
+
   void _initializeFields() {
     _name = snapshotData['name'] as String?;
     _details = snapshotData['details'] as String?;
     _achivePeriod = castToType<int>(snapshotData['achivePeriod']);
     _pheses = getDataList(snapshotData['pheses']);
     _minPhasePeriod = castToType<int>(snapshotData['minPhasePeriod']);
+    _progress = castToType<double>(snapshotData['progress']);
   }
 
   static CollectionReference get collection =>
@@ -86,6 +92,7 @@ Map<String, dynamic> createTargetRecordData({
   String? details,
   int? achivePeriod,
   int? minPhasePeriod,
+  double? progress,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -93,6 +100,7 @@ Map<String, dynamic> createTargetRecordData({
       'details': details,
       'achivePeriod': achivePeriod,
       'minPhasePeriod': minPhasePeriod,
+      'progress': progress,
     }.withoutNulls,
   );
 
@@ -109,12 +117,19 @@ class TargetRecordDocumentEquality implements Equality<TargetRecord> {
         e1?.details == e2?.details &&
         e1?.achivePeriod == e2?.achivePeriod &&
         listEquality.equals(e1?.pheses, e2?.pheses) &&
-        e1?.minPhasePeriod == e2?.minPhasePeriod;
+        e1?.minPhasePeriod == e2?.minPhasePeriod &&
+        e1?.progress == e2?.progress;
   }
 
   @override
-  int hash(TargetRecord? e) => const ListEquality().hash(
-      [e?.name, e?.details, e?.achivePeriod, e?.pheses, e?.minPhasePeriod]);
+  int hash(TargetRecord? e) => const ListEquality().hash([
+        e?.name,
+        e?.details,
+        e?.achivePeriod,
+        e?.pheses,
+        e?.minPhasePeriod,
+        e?.progress
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is TargetRecord;

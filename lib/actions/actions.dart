@@ -17,9 +17,7 @@ Future addCheckList(
       context,
       checkList: checkList,
       phaseRef: phaseRef,
-      loopCounter: (int counter) {
-        return counter++;
-      }(loopCounter),
+      loopCounter: (loopCounter) + 1,
     );
   } else {
     return;
@@ -94,9 +92,7 @@ Future addGeneratedPhases(
     await action_blocks.addGeneratedPhases(
       context,
       phasesList: phasesList,
-      loopCounter: (int counter) {
-        return counter++;
-      }(loopCounter),
+      loopCounter: (loopCounter) + 1,
       targetRef: targetRef,
       parentRef: parentRef,
     );

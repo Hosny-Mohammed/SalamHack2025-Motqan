@@ -46,156 +46,185 @@ class _TargetPlanWidgetState extends State<TargetPlanWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-      appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primary,
-        automaticallyImplyLeading: true,
-        title: Row(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Text(
-              valueOrDefault<String>(
-                widget.targetCollection?.name,
-                'Target',
-              ),
-              style: FlutterFlowTheme.of(context).titleLarge.override(
-                    fontFamily: 'Outfit',
-                    letterSpacing: 0.0,
-                  ),
-            ),
-            Text(
-              ' - Phases',
-              style: FlutterFlowTheme.of(context).titleLarge.override(
-                    fontFamily: 'Outfit',
-                    letterSpacing: 0.0,
-                  ),
-            ),
-          ],
-        ),
-        actions: [
-          Padding(
-            padding: EdgeInsets.all(10.0),
-            child: Row(
+    return Title(
+        title: 'TargetPlan',
+        color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
+        child: Scaffold(
+          key: scaffoldKey,
+          backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+          appBar: AppBar(
+            backgroundColor: FlutterFlowTheme.of(context).primary,
+            automaticallyImplyLeading: true,
+            title: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Text(
-                  'Total Days: ',
-                  style: FlutterFlowTheme.of(context).bodyLarge.override(
-                        fontFamily: 'Manrope',
+                  'Target',
+                  style: FlutterFlowTheme.of(context).titleLarge.override(
+                        fontFamily: 'Outfit',
                         letterSpacing: 0.0,
                       ),
                 ),
                 Text(
-                  valueOrDefault<String>(
-                    widget.targetCollection?.achivePeriod.toString(),
-                    '11',
-                  ),
-                  style: FlutterFlowTheme.of(context).bodyLarge.override(
-                        fontFamily: 'Manrope',
+                  ' - Phases',
+                  style: FlutterFlowTheme.of(context).titleLarge.override(
+                        fontFamily: 'Outfit',
                         letterSpacing: 0.0,
                       ),
                 ),
               ],
             ),
-          ),
-        ],
-        centerTitle: true,
-        elevation: 0.0,
-      ),
-      body: SafeArea(
-        top: true,
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 0.0, 0.0),
-              child: AutoSizeText(
-                valueOrDefault<String>(
-                  widget.targetCollection?.details,
-                  'Target Details',
-                ),
-                style: FlutterFlowTheme.of(context).labelLarge.override(
-                      fontFamily: 'Manrope',
-                      letterSpacing: 0.0,
+            actions: [
+              Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Text(
+                      'Total Days: ',
+                      style: FlutterFlowTheme.of(context).bodyLarge.override(
+                            fontFamily: 'Manrope',
+                            letterSpacing: 0.0,
+                          ),
                     ),
+                    Text(
+                      valueOrDefault<String>(
+                        widget.targetCollection?.achivePeriod.toString(),
+                        '11',
+                      ),
+                      style: FlutterFlowTheme.of(context).bodyLarge.override(
+                            fontFamily: 'Manrope',
+                            letterSpacing: 0.0,
+                          ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
-              child: Builder(
-                builder: (context) {
-                  final targetPhaseRef =
-                      widget.targetCollection?.pheses.toList() ?? [];
+            ],
+            centerTitle: true,
+            elevation: 0.0,
+          ),
+          body: SafeArea(
+            top: true,
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 0.0, 0.0),
+                  child: Text(
+                    valueOrDefault<String>(
+                      widget.targetCollection?.name,
+                      'Desktop Development',
+                    ),
+                    textAlign: TextAlign.start,
+                    style: FlutterFlowTheme.of(context).headlineMedium.override(
+                          fontFamily: 'Outfit',
+                          letterSpacing: 0.0,
+                        ),
+                  ),
+                ),
+                Divider(
+                  height: 32.0,
+                  thickness: 1.0,
+                  color: FlutterFlowTheme.of(context).alternate,
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 0.0, 0.0),
+                  child: AutoSizeText(
+                    valueOrDefault<String>(
+                      widget.targetCollection?.details,
+                      'Target Details',
+                    ),
+                    style: FlutterFlowTheme.of(context).labelLarge.override(
+                          fontFamily: 'Manrope',
+                          letterSpacing: 0.0,
+                        ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                  child: Builder(
+                    builder: (context) {
+                      final targetPhaseRef =
+                          widget.targetCollection?.pheses.toList() ?? [];
 
-                  return ListView.builder(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    itemCount: targetPhaseRef.length,
-                    itemBuilder: (context, targetPhaseRefIndex) {
-                      final targetPhaseRefItem =
-                          targetPhaseRef[targetPhaseRefIndex];
-                      return StreamBuilder<PhaseRecord>(
-                        stream: PhaseRecord.getDocument(targetPhaseRefItem),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(
-                              child: SizedBox(
-                                width: 50.0,
-                                height: 50.0,
-                                child: SpinKitDoubleBounce(
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  size: 50.0,
-                                ),
-                              ),
-                            );
-                          }
-
-                          final phaseListViewerPhaseRecord = snapshot.data!;
-
-                          return InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              context.pushNamed(
-                                PhaseDetailsWidget.routeName,
-                                queryParameters: {
-                                  'phaseDoc': serializeParam(
-                                    phaseListViewerPhaseRecord,
-                                    ParamType.Document,
+                      return ListView.builder(
+                        padding: EdgeInsets.zero,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: targetPhaseRef.length,
+                        itemBuilder: (context, targetPhaseRefIndex) {
+                          final targetPhaseRefItem =
+                              targetPhaseRef[targetPhaseRefIndex];
+                          return StreamBuilder<PhaseRecord>(
+                            stream: PhaseRecord.getDocument(targetPhaseRefItem),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 50.0,
+                                    height: 50.0,
+                                    child: SpinKitDoubleBounce(
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      size: 50.0,
+                                    ),
                                   ),
-                                  'minDays': serializeParam(
-                                    widget.targetCollection?.minPhasePeriod,
-                                    ParamType.int,
-                                  ),
-                                }.withoutNulls,
-                                extra: <String, dynamic>{
-                                  'phaseDoc': phaseListViewerPhaseRecord,
+                                );
+                              }
+
+                              final phaseListViewerPhaseRecord = snapshot.data!;
+
+                              return InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  context.pushNamed(
+                                    PhaseDetailsWidget.routeName,
+                                    queryParameters: {
+                                      'phaseDoc': serializeParam(
+                                        phaseListViewerPhaseRecord,
+                                        ParamType.Document,
+                                      ),
+                                      'minDays': serializeParam(
+                                        widget
+                                            .targetCollection?.minPhasePeriod,
+                                        ParamType.int,
+                                      ),
+                                      'targetRef': serializeParam(
+                                        widget.targetCollection?.reference,
+                                        ParamType.DocumentReference,
+                                      ),
+                                      'total': serializeParam(
+                                        widget.targetCollection?.achivePeriod,
+                                        ParamType.int,
+                                      ),
+                                    }.withoutNulls,
+                                    extra: <String, dynamic>{
+                                      'phaseDoc': phaseListViewerPhaseRecord,
+                                    },
+                                  );
                                 },
+                                child: PhaseListViewerWidget(
+                                  key: Key(
+                                      'Key76c_${targetPhaseRefIndex}_of_${targetPhaseRef.length}'),
+                                  phaseItem: phaseListViewerPhaseRecord,
+                                ),
                               );
                             },
-                            child: PhaseListViewerWidget(
-                              key: Key(
-                                  'Key76c_${targetPhaseRefIndex}_of_${targetPhaseRef.length}'),
-                              phaseItem: phaseListViewerPhaseRecord,
-                            ),
                           );
                         },
                       );
                     },
-                  );
-                },
-              ),
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
-    );
+          ),
+        ));
   }
 }

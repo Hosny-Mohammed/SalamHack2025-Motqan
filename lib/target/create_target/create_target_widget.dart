@@ -580,6 +580,10 @@ class _CreateTargetWidgetState extends State<CreateTargetWidget>
                                                     .validate()) {
                                               return;
                                             }
+                                            if (_model.backgroundValue ==
+                                                null) {
+                                              return;
+                                            }
 
                                             var targetRecordReference =
                                                 TargetRecord.collection.doc();
@@ -598,6 +602,7 @@ class _CreateTargetWidgetState extends State<CreateTargetWidget>
                                                           .text) /
                                                       10)
                                                   .toInt(),
+                                              progress: 0.0,
                                             ));
                                             _model.createdTargetDoc =
                                                 TargetRecord
@@ -619,6 +624,7 @@ class _CreateTargetWidgetState extends State<CreateTargetWidget>
                                                                           .text) /
                                                                       10)
                                                                   .toInt(),
+                                                          progress: 0.0,
                                                         ),
                                                         targetRecordReference);
 
@@ -684,6 +690,7 @@ class _CreateTargetWidgetState extends State<CreateTargetWidget>
                                           },
                                           text: 'Create Target',
                                           options: FFButtonOptions(
+                                            width: 250.0,
                                             height: 50.0,
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
