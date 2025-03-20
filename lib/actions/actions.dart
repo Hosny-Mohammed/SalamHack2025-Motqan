@@ -17,9 +17,7 @@ Future addCheckList(
       context,
       checkList: checkList,
       phaseRef: phaseRef,
-      loopCounter: (int counter) {
-        return counter++;
-      }(loopCounter),
+      loopCounter: (loopCounter) + 1,
     );
   } else {
     return;
@@ -75,33 +73,32 @@ Future addGeneratedPhases(
       phaseRef: createdPhase.reference,
       loopCounter: 0,
     );
+    if (targetRef != null) {
+      await targetRef.update({
+        ...mapToFirestore(
+          {
+            'pheses': FieldValue.arrayUnion([createdPhase.reference]),
+          },
+        ),
+      });
+    } else {
+      await parentRef!.update({
+        ...mapToFirestore(
+          {
+            'sub_phases': FieldValue.arrayUnion([createdPhase.reference]),
+          },
+        ),
+      });
+    }
 
-    await targetRef!.update({
-      ...mapToFirestore(
-        {
-          'pheses': FieldValue.arrayUnion([createdPhase.reference]),
-        },
-      ),
-    });
-
-    await parentRef!.update({
-      ...mapToFirestore(
-        {
-          'sub_phases': FieldValue.arrayUnion([createdPhase.reference]),
-        },
-      ),
-    });
+    await action_blocks.addGeneratedPhases(
+      context,
+      phasesList: phasesList,
+      loopCounter: (loopCounter) + 1,
+      targetRef: targetRef,
+      parentRef: parentRef,
+    );
   } else {
     return;
   }
-
-  await action_blocks.addGeneratedPhases(
-    context,
-    phasesList: phasesList,
-    loopCounter: (int counter) {
-      return counter++;
-    }(loopCounter),
-    targetRef: targetRef,
-    parentRef: parentRef,
-  );
 }

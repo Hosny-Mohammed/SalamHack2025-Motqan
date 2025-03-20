@@ -1,13 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 import '/index.dart';
@@ -125,6 +123,20 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             phaseDoc: params.getParam(
               'phaseDoc',
               ParamType.Document,
+            ),
+            minDays: params.getParam(
+              'minDays',
+              ParamType.int,
+            ),
+            targetRef: params.getParam(
+              'targetRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['target'],
+            ),
+            total: params.getParam(
+              'total',
+              ParamType.int,
             ),
           ),
         )
@@ -313,14 +325,11 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: SpinKitDoubleBounce(
-                      color: FlutterFlowTheme.of(context).primary,
-                      size: 50.0,
-                    ),
+              ? Container(
+                  color: Colors.transparent,
+                  child: Image.asset(
+                    'assets/images/logo.png',
+                    fit: BoxFit.none,
                   ),
                 )
               : page;

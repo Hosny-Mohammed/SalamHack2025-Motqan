@@ -46,7 +46,7 @@ class _PhaseListViewerWidgetState extends State<PhaseListViewerWidget> {
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
       child: Row(
-        mainAxisSize: MainAxisSize.max,
+        mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Padding(
@@ -91,7 +91,7 @@ class _PhaseListViewerWidgetState extends State<PhaseListViewerWidget> {
                 borderRadius: BorderRadius.circular(8.0),
               ),
               child: Column(
-                mainAxisSize: MainAxisSize.max,
+                mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -103,7 +103,9 @@ class _PhaseListViewerWidgetState extends State<PhaseListViewerWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Text(
-                            'Taken Days: ',
+                            FFLocalizations.of(context).getText(
+                              'rmtwswl8' /* Taken Days:  */,
+                            ),
                             style: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(

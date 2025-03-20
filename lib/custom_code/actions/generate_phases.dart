@@ -5,6 +5,7 @@ import '/actions/actions.dart' as action_blocks;
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom actions
+import '/flutter_flow/custom_functions.dart'; // Imports custom functions
 import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
@@ -13,7 +14,7 @@ import 'dart:convert';
 import 'package:google_generative_ai/google_generative_ai.dart';
 
 Future<List<PhaseStruct>> generatePhases(String prompt) async {
-  var apiKey = "AIzaSyCE9cM8YiCuv5irplf5SxgfMbxvr6QWzsw";
+  var apiKey = "AIzaSyAPvssTzSt81g9Q6vhIFkD02SxSZgssEE0";
 
   final schema = Schema.array(
       description: 'List of phases.',

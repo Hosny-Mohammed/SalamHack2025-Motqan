@@ -35,11 +35,23 @@ class TargetRecord extends FirestoreRecord {
   List<DocumentReference> get pheses => _pheses ?? const [];
   bool hasPheses() => _pheses != null;
 
+  // "minPhasePeriod" field.
+  int? _minPhasePeriod;
+  int get minPhasePeriod => _minPhasePeriod ?? 0;
+  bool hasMinPhasePeriod() => _minPhasePeriod != null;
+
+  // "progress" field.
+  double? _progress;
+  double get progress => _progress ?? 0.0;
+  bool hasProgress() => _progress != null;
+
   void _initializeFields() {
     _name = snapshotData['name'] as String?;
     _details = snapshotData['details'] as String?;
     _achivePeriod = castToType<int>(snapshotData['achivePeriod']);
     _pheses = getDataList(snapshotData['pheses']);
+    _minPhasePeriod = castToType<int>(snapshotData['minPhasePeriod']);
+    _progress = castToType<double>(snapshotData['progress']);
   }
 
   static CollectionReference get collection =>
@@ -79,12 +91,16 @@ Map<String, dynamic> createTargetRecordData({
   String? name,
   String? details,
   int? achivePeriod,
+  int? minPhasePeriod,
+  double? progress,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'name': name,
       'details': details,
       'achivePeriod': achivePeriod,
+      'minPhasePeriod': minPhasePeriod,
+      'progress': progress,
     }.withoutNulls,
   );
 
@@ -100,12 +116,20 @@ class TargetRecordDocumentEquality implements Equality<TargetRecord> {
     return e1?.name == e2?.name &&
         e1?.details == e2?.details &&
         e1?.achivePeriod == e2?.achivePeriod &&
-        listEquality.equals(e1?.pheses, e2?.pheses);
+        listEquality.equals(e1?.pheses, e2?.pheses) &&
+        e1?.minPhasePeriod == e2?.minPhasePeriod &&
+        e1?.progress == e2?.progress;
   }
 
   @override
-  int hash(TargetRecord? e) => const ListEquality()
-      .hash([e?.name, e?.details, e?.achivePeriod, e?.pheses]);
+  int hash(TargetRecord? e) => const ListEquality().hash([
+        e?.name,
+        e?.details,
+        e?.achivePeriod,
+        e?.pheses,
+        e?.minPhasePeriod,
+        e?.progress
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is TargetRecord;
