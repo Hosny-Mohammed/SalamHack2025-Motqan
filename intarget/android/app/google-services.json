@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "485350965959",
+    "project_id": "in-target-j9mk7b",
+    "storage_bucket": "in-target-j9mk7b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:485350965959:android:d1db966f355eef7c9b74e2",
+        "android_client_info": {
+          "package_name": "com.motqan.intarget"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhJ89Pvs5nu33BC8ixGBfcppgA8PKIgoA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
