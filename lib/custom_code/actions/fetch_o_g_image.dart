@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:html/parser.dart' as html;
-import 'package:html/dom.dart';
+import 'package:html/dom.dart' as dom;
 
 Future<String> fetchOGImage(String url) async {
   try {
@@ -19,16 +19,17 @@ Future<String> fetchOGImage(String url) async {
 
     if (response.statusCode == 200) {
       var document = html.parse(response.body);
-      Element? ogImageElement =
+      dom.Element? ogImageElement =
           document.querySelector("meta[property='og:image']");
 
       if (ogImageElement != null) {
-        return ogImageElement.attributes['content'];
+        return ogImageElement.attributes['content'] ??
+            "https://picsum.photos/seed/790/600";
       } else {
-        rethrow; // No OG image found
+        return "https://picsum.photos/seed/790/600"; // No OG image found
       }
     } else {
-      rethrow;
+      return "https://picsum.photos/seed/790/600";
     }
   } catch (e) {
     return "https://picsum.photos/seed/790/600";

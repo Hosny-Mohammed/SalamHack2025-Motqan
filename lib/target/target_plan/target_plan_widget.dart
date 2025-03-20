@@ -2,6 +2,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/target/phase_list_viewer/phase_list_viewer_widget.dart';
+import '/index.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -156,10 +157,34 @@ class _TargetPlanWidgetState extends State<TargetPlanWidget> {
 
                           final phaseListViewerPhaseRecord = snapshot.data!;
 
-                          return PhaseListViewerWidget(
-                            key: Key(
-                                'Key76c_${targetPhaseRefIndex}_of_${targetPhaseRef.length}'),
-                            phaseItem: phaseListViewerPhaseRecord,
+                          return InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed(
+                                PhaseDetailsWidget.routeName,
+                                queryParameters: {
+                                  'phaseDoc': serializeParam(
+                                    phaseListViewerPhaseRecord,
+                                    ParamType.Document,
+                                  ),
+                                  'minDays': serializeParam(
+                                    widget.targetCollection?.minPhasePeriod,
+                                    ParamType.int,
+                                  ),
+                                }.withoutNulls,
+                                extra: <String, dynamic>{
+                                  'phaseDoc': phaseListViewerPhaseRecord,
+                                },
+                              );
+                            },
+                            child: PhaseListViewerWidget(
+                              key: Key(
+                                  'Key76c_${targetPhaseRefIndex}_of_${targetPhaseRef.length}'),
+                              phaseItem: phaseListViewerPhaseRecord,
+                            ),
                           );
                         },
                       );

@@ -91,17 +91,16 @@ Future addGeneratedPhases(
         },
       ),
     });
+    await action_blocks.addGeneratedPhases(
+      context,
+      phasesList: phasesList,
+      loopCounter: (int counter) {
+        return counter++;
+      }(loopCounter),
+      targetRef: targetRef,
+      parentRef: parentRef,
+    );
   } else {
     return;
   }
-
-  await action_blocks.addGeneratedPhases(
-    context,
-    phasesList: phasesList,
-    loopCounter: (int counter) {
-      return counter++;
-    }(loopCounter),
-    targetRef: targetRef,
-    parentRef: parentRef,
-  );
 }

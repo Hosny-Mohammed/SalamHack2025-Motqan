@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/phase/material/material_widget.dart';
 import '/phase/task/task_widget.dart';
 import '/target/phase_list_viewer/phase_list_viewer_widget.dart';
@@ -21,9 +20,11 @@ class PhaseDetailsWidget extends StatefulWidget {
   const PhaseDetailsWidget({
     super.key,
     required this.phaseDoc,
+    required this.minDays,
   });
 
   final PhaseRecord? phaseDoc;
+  final int? minDays;
 
   static String routeName = 'PhaseDetails';
   static String routePath = '/phaseDetails';
@@ -53,8 +54,7 @@ class _PhaseDetailsWidgetState extends State<PhaseDetailsWidget>
         }(widget.phaseDoc!.name, widget.phaseDoc!.dueDays,
             widget.phaseDoc!.description),
       );
-      if (widget.phaseDoc!.dueDays >
-          ((widget.phaseDoc!.minSubPhasePeriod / 10).toInt())) {
+      if (widget.phaseDoc!.dueDays > widget.minDays!) {
         await action_blocks.addGeneratedPhases(
           context,
           phasesList: _model.generatedPhases,
@@ -721,33 +721,6 @@ class _PhaseDetailsWidgetState extends State<PhaseDetailsWidget>
                         ),
                       ],
                     ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 12.0),
-                child: FFButtonWidget(
-                  onPressed: () {
-                    print('Button pressed ...');
-                  },
-                  text: 'Enroll in Class',
-                  options: FFButtonOptions(
-                    width: double.infinity,
-                    height: 52.0,
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: FlutterFlowTheme.of(context).primary,
-                    textStyle:
-                        FlutterFlowTheme.of(context).titleMedium.override(
-                              fontFamily: 'Manrope',
-                              letterSpacing: 0.0,
-                            ),
-                    borderSide: BorderSide(
-                      color: FlutterFlowTheme.of(context).primary,
-                      width: 2.0,
-                    ),
-                    borderRadius: BorderRadius.circular(50.0),
                   ),
                 ),
               ),

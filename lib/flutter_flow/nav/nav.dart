@@ -126,6 +126,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'phaseDoc',
               ParamType.Document,
             ),
+            minDays: params.getParam(
+              'minDays',
+              ParamType.int,
+            ),
           ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
